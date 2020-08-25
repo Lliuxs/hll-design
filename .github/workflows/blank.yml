@@ -20,7 +20,7 @@ jobs:
           FOLDER: storybook-static
       # - name: Coveralls
       #     env:
-      #       COVERALLS_SERVICE_NAME: 'GitHub CI'
+      #       COVERALLS_SERVICE_NAME: 'travis-pro'
       #       COVERALLS_GIT_BRANCH: master
       #       COVERALLS_REPO_TOKEN : ${{secrets.COVERALLS_REPO_TOKEN}}
       #       run: |

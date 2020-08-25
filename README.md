@@ -1,5 +1,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Lliuxs/hll-react-ui/badge.svg?branch=master)](https://coveralls.io/github/Lliuxs/hll-react-ui?branch=master)
 
+### 文档地址
+https://lliuxs.github.io/hll-react-ui/
 
 1. 项目初始化
   - create-react-app  hll-design --template typescript
@@ -72,3 +74,6 @@
   - 部署 "postinstall": "patch-package"
 
 10. 添加sponsor按钮
+
+11. 使用np发布
+  

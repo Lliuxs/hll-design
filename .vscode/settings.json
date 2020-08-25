@@ -19,6 +19,7 @@
     "storysource",
     "testid",
     "testprops",
-    "textfield"
+    "textfield",
+    "useralt"
   ]
 }
