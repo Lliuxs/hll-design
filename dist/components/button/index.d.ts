@@ -65,7 +65,7 @@ export declare function Button(props: PropsWithChildren<ButtonProps>): React.DOM
     suppressHydrationWarning?: boolean | undefined;
     accessKey?: string | undefined;
     className?: string | undefined;
-    contentEditable?: boolean | "true" | "false" | "inherit" | undefined;
+    contentEditable?: boolean | "inherit" | "true" | "false" | undefined;
     contextMenu?: string | undefined;
     dir?: string | undefined;
     draggable?: boolean | "true" | "false" | undefined;
@@ -78,7 +78,7 @@ export declare function Button(props: PropsWithChildren<ButtonProps>): React.DOM
     style?: React.CSSProperties | undefined;
     tabIndex?: number | undefined;
     title?: string | undefined;
-    translate?: "yes" | "no" | undefined;
+    translate?: "no" | "yes" | undefined;
     radioGroup?: string | undefined;
     role?: string | undefined;
     about?: string | undefined;
@@ -105,14 +105,14 @@ export declare function Button(props: PropsWithChildren<ButtonProps>): React.DOM
     is?: string | undefined;
     'aria-activedescendant'?: string | undefined;
     'aria-atomic'?: boolean | "true" | "false" | undefined;
-    'aria-autocomplete'?: "none" | "inline" | "list" | "both" | undefined;
+    'aria-autocomplete'?: "none" | "list" | "inline" | "both" | undefined;
     'aria-busy'?: boolean | "true" | "false" | undefined;
     'aria-checked'?: boolean | "true" | "false" | "mixed" | undefined;
     'aria-colcount'?: number | undefined;
     'aria-colindex'?: number | undefined;
     'aria-colspan'?: number | undefined;
     'aria-controls'?: string | undefined;
-    'aria-current'?: boolean | "time" | "true" | "false" | "page" | "step" | "location" | "date" | undefined;
+    'aria-current'?: boolean | "time" | "true" | "false" | "step" | "page" | "location" | "date" | undefined;
     'aria-describedby'?: string | undefined;
     'aria-details'?: string | undefined;
     'aria-disabled'?: boolean | "true" | "false" | undefined;

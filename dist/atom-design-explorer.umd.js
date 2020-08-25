@@ -1,4 +1,269 @@
-export var icons = {
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('styled-components'), require('react'), require('polished')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'styled-components', 'react', 'polished'], factory) :
+  (global = global || self, factory(global.hllReactUi = {}, global.styledComponents, global.react, global.polished));
+}(this, (function (exports, styled, React, polished) {
+  var styled__default = 'default' in styled ? styled['default'] : styled;
+  var React__default = 'default' in React ? React['default'] : React;
+
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
+  function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+
+    for (i = 0; i < sourceKeys.length; i++) {
+      key = sourceKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      target[key] = source[key];
+    }
+
+    return target;
+  }
+
+  function _taggedTemplateLiteralLoose(strings, raw) {
+    if (!raw) {
+      raw = strings.slice(0);
+    }
+
+    strings.raw = raw;
+    return strings;
+  }
+
+  function _templateObject() {
+    var data = _taggedTemplateLiteralLoose(["\nhtml{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}\n"]);
+
+    _templateObject = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+  var GlobalStyle = styled.createGlobalStyle(_templateObject());
+
+  var color = {
+    // Palette
+    primary: "#FF4785",
+    secondary: "#1EA7FD",
+    tertiary: "#DDDDDD",
+    orange: "#FC521F",
+    gold: "#FFAE00",
+    green: "#66BF3C",
+    seafoam: "#37D5D3",
+    purple: "#6F2CAC",
+    ultraviolet: "#2A0481",
+    // Monochrome
+    lightest: "#FFFFFF",
+    lighter: "#F8F8F8",
+    light: "#F3F3F3",
+    mediumlight: "#EEEEEE",
+    medium: "#DDDDDD",
+    mediumdark: "#999999",
+    dark: "#666666",
+    darker: "#444444",
+    darkest: "#333333",
+    border: "rgba(0,0,0,.1)",
+    // Status
+    positive: "#66BF3C",
+    negative: "#FF4400",
+    warning: "#E69D00"
+  };
+  var background = {
+    app: "#F6F9FC",
+    appInverse: "#7A8997",
+    positive: "#E1FFD4",
+    negative: "#FEDED2",
+    warning: "#FFF5CF"
+  };
+  var typography = {
+    type: {
+      primary: '"Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif',
+      code: //书写字体
+      '"SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace'
+    },
+    weight: {
+      regular: "400",
+      bold: "700",
+      extrabold: "800",
+      black: "900"
+    },
+    size: {
+      s1: "12",
+      s2: "14",
+      s3: "16",
+      m1: "20",
+      m2: "24",
+      m3: "28",
+      l1: "32",
+      l2: "40",
+      l3: "48"
+    }
+  };
+  var spacing = {
+    padding: {
+      small: 10,
+      medium: 20,
+      large: 30
+    },
+    borderRadius: {
+      small: 5,
+      default: 10
+    }
+  };
+  var breakpoint = 600;
+  var pageMargin = 5;
+
+  function _templateObject$1() {
+    var data = _taggedTemplateLiteralLoose(["\n  0%, 100% { opacity: 1; }\n  50% { opacity: .4; }\n"]);
+
+    _templateObject$1 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+  var easing = {
+    rubber: "cubic-bezier(0.175, 0.885, 0.335, 1.05)"
+  };
+  var glow = styled.keyframes(_templateObject$1());
+
+  function _templateObject3() {
+    var data = _taggedTemplateLiteralLoose(["\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  overflow: hidden;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  text-decoration: none;\n  transition: all 150ms ease-out;\n  transform: translate3d(0,0,0);\n  vertical-align: top;\n  white-space: nowrap;\n  user-select: none;\n  opacity: 1;\n  margin: 0;\n  background: transparent;\n\n\n  font-size: ", "px;\n  font-weight: ", ";\n  line-height: 1;\n\n  ", "\n\n  ", " {\n    transform: scale3d(1,1,1) translate3d(0,0,0);\n    transition: transform 700ms ", ";\n    opacity: 1;\n  }\n\n  ", " {\n    transform: translate3d(0, 100%, 0);\n  }\n\n  ", "\n\n  ", "\n\n  ", "\n\n\n\n  ", "\n\n  ", "\n\n  ", "\n\n  ", ";\n\n    ", ";\n\n    ", ";\n\n      ", "\n\n      ", "\n\n      ", ";\n"]);
+
+    _templateObject3 = function _templateObject3() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject2() {
+    var data = _taggedTemplateLiteralLoose(["\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 0;\n\tright: 0;\n\topacity: 0;\n"]);
+
+    _templateObject2 = function _templateObject2() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject$2() {
+    var data = _taggedTemplateLiteralLoose(["\n\tdisplay: inline-block;\n\tvertical-align: top;\n"]);
+
+    _templateObject$2 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+  var APPEARANCES = {
+    primary: "primary",
+    primaryOutline: "primaryOutline",
+    secondary: "secondary",
+    secondaryOutline: "secondaryOutline",
+    tertiary: "tertiary",
+    outline: "outline",
+    inversePrimary: "inversePrimary",
+    inverseSecondary: "inverseSecondary",
+    inverseOutline: "inverseOutline"
+  };
+  var SIZES = {
+    small: "small",
+    medium: "medium"
+  }; // button的样式
+
+  var Text = styled__default.span(_templateObject$2());
+  var Loading = styled__default.span(_templateObject2());
+  var btnPadding = {
+    medium: "13px 20px",
+    small: "8px 16px"
+  }; // 样式文件
+
+  var StyledButton = styled__default.button(_templateObject3(), function (props) {
+    return props.size === SIZES.small ? "8px 16px" : "13px 20px";
+  }, function (props) {
+    return props.size === SIZES.small ? typography.size.s1 : typography.size.s2;
+  }, typography.weight.extrabold, function (props) {
+    return !props.isLoading && "\n      &:hover {\n        transform: translate3d(0, -2px, 0);\n        box-shadow: rgba(0, 0, 0, 0.2) 0 2px 6px 0;\n      }\n\n      &:active {\n        transform: translate3d(0, 0, 0);\n      }\n\n      &:focus {\n        box-shadow: " + polished.rgba(color.primary, 0.4) + " 0 1px 9px 2px;\n      }\n\n      &:focus:hover {\n        box-shadow: " + polished.rgba(color.primary, 0.2) + " 0 8px 18px 0px;\n      }\n    ";
+  }, Text, easing.rubber, Loading, function (props) {
+    return props.disabled && "\n      cursor: not-allowed !important;\n      opacity: 0.5;\n      &:hover {\n        transform: none;\n      }\n    ";
+  }, function (props) {
+    return props.isUnclickable && "\n      cursor: default !important;\n      pointer-events: none;\n      &:hover {\n        transform: none;\n      }\n    ";
+  }, function (props) {
+    return props.isLoading && "\n      cursor: progress !important;\n      opacity: 0.7;\n\n      " + Loading + " {\n        transition: transform 700ms " + easing.rubber + ";\n        transform: translate3d(0, -50%, 0);\n        opacity: 1;\n      }\n\n      " + Text + " {\n        transform: scale3d(0, 0, 1) translate3d(0, -100%, 0);\n        opacity: 0;\n      }\n\n      &:hover {\n        transform: none;\n      }\n    ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.primary && "\n      background: " + color.primary + ";\n      color: " + color.lightest + ";\n\n      " + (!props.isLoading && "\n          &:hover {\n            background: " + polished.darken(0.05, color.primary) + ";\n          }\n          &:active {\n            box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;\n          }\n          &:focus {\n            box-shadow: " + polished.rgba(color.primary, 0.4) + " 0 1px 9px 2px;\n          }\n          &:focus:hover {\n            box-shadow: " + polished.rgba(color.primary, 0.2) + " 0 8px 18px 0px;\n          }\n        ") + "\n    ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.secondary && "\n      background: " + color.secondary + ";\n      color: " + color.lightest + ";\n\n      " + (!props.isLoading && "\n          &:hover {\n            background: " + polished.darken(0.05, color.secondary) + ";\n          }\n          &:active {\n            box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;\n          }\n          &:focus {\n            box-shadow: " + polished.rgba(color.secondary, 0.4) + " 0 1px 9px 2px;\n          }\n          &:focus:hover {\n            box-shadow: " + polished.rgba(color.secondary, 0.2) + " 0 8px 18px 0px;\n          }\n        ") + "\n    ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.tertiary && "\n      background: " + color.tertiary + ";\n      color: " + color.darkest + ";\n\n      " + (!props.isLoading && "\n          &:hover {\n            background: " + polished.darken(0.05, color.tertiary) + ";\n          }\n          &:active {\n            box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;\n          }\n          &:focus {\n            box-shadow: " + polished.rgba(color.darkest, 0.15) + " 0 1px 9px 2px;\n          }\n          &:focus:hover {\n            box-shadow: " + polished.rgba(color.darkest, 0.05) + " 0 8px 18px 0px;\n          }\n        ") + "\n    ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.outline && "\n      box-shadow: " + polished.opacify(0.05, color.border) + " 0 0 0 1px inset;\n      color: " + color.dark + ";\n      background: transparent;\n\n      " + (!props.isLoading && "\n          &:hover {\n            box-shadow: " + polished.opacify(0.3, color.border) + " 0 0 0 1px inset;\n          }\n\n          &:active {\n            background: " + polished.opacify(0.05, color.border) + ";\n            box-shadow: transparent 0 0 0 1px inset;\n            color: " + color.darkest + ";\n          }\n\n          &:active:focus:hover {\n            " + "\n            background: " + polished.opacify(0.05, color.border) + ";\n            box-shadow:  " + polished.rgba(color.darkest, 0.15) + " 0 1px 9px 2px;\n          }\n\n          &:focus {\n            box-shadow: " + polished.opacify(0.05, color.border) + " 0 0 0 1px inset, \n            " + polished.rgba(color.darkest, 0.15) + " 0 1px 9px 2px;\n          }\n          &:focus:hover {\n            box-shadow: " + polished.opacify(0.05, color.border) + " 0 0 0 1px inset, \n            " + polished.rgba(color.darkest, 0.05) + " 0 8px 18px 0px;\n          }\n        ") + ";\n    ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.primaryOutline && "\n        box-shadow: " + color.primary + " 0 0 0 1px inset;\n        color: " + color.primary + ";\n\n        &:hover {\n          box-shadow: " + color.primary + " 0 0 0 1px inset;\n          background: transparent;\n        }\n\n        &:active {\n          background: " + color.primary + ";\n          box-shadow: " + color.primary + " 0 0 0 1px inset;\n          color: " + color.lightest + ";\n        }\n        &:focus {\n          box-shadow: " + color.primary + " 0 0 0 1px inset, " + polished.rgba(color.primary, 0.4) + " 0 1px 9px 2px;\n        }\n        &:focus:hover {\n          box-shadow: " + color.primary + " 0 0 0 1px inset, " + polished.rgba(color.primary, 0.2) + " 0 8px 18px 0px;\n        }\n      ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.secondaryOutline && "\n        box-shadow: " + color.secondary + " 0 0 0 1px inset;\n        color: " + color.secondary + ";\n\n        &:hover {\n          box-shadow: " + color.secondary + " 0 0 0 1px inset;\n          background: transparent;\n        }\n\n        &:active {\n          background: " + color.secondary + ";\n          box-shadow: " + color.secondary + " 0 0 0 1px inset;\n          color: " + color.lightest + ";\n        }\n        &:focus {\n          box-shadow: " + color.secondary + " 0 0 0 1px inset,\n            " + polished.rgba(color.secondary, 0.4) + " 0 1px 9px 2px;\n        }\n        &:focus:hover {\n          box-shadow: " + color.secondary + " 0 0 0 1px inset,\n            " + polished.rgba(color.secondary, 0.2) + " 0 8px 18px 0px;\n        }\n      ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.inversePrimary && "\n          background: " + color.lightest + ";\n          color: " + color.primary + ";\n\n          " + (!props.isLoading && "\n              &:hover {\n                background: " + color.lightest + ";\n              }\n              &:active {\n                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;\n              }\n              &:focus {\n                box-shadow: " + polished.rgba(color.primary, 0.4) + " 0 1px 9px 2px;\n              }\n              &:focus:hover {\n                box-shadow: " + polished.rgba(color.primary, 0.2) + " 0 8px 18px 0px;\n              }\n          ") + "\n      ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.inverseSecondary && "\n          background: " + color.lightest + ";\n          color: " + color.secondary + ";\n\n          " + (!props.isLoading && "\n              &:hover {\n                background: " + color.lightest + ";\n              }\n              &:active {\n                box-shadow: rgba(0, 0, 0, 0.1) 0 0 0 3em inset;\n              }\n              &:focus {\n                box-shadow: " + polished.rgba(color.secondary, 0.4) + " 0 1px 9px 2px;\n              }\n              &:focus:hover {\n                box-shadow: " + polished.rgba(color.secondary, 0.2) + " 0 8px 18px 0px;\n              }\n          ") + "\n      ";
+  }, function (props) {
+    return props.appearance === APPEARANCES.inverseOutline && "\n          box-shadow: " + color.lightest + " 0 0 0 1px inset;\n          color: " + color.lightest + ";\n\n          &:hover {\n            box-shadow: " + color.lightest + " 0 0 0 1px inset;\n            background: transparent;\n          }\n\n          &:active {\n            background: " + color.lightest + ";\n            box-shadow: " + color.lightest + " 0 0 0 1px inset;\n            color: " + color.darkest + ";\n          }\n          &:focus {\n            box-shadow: " + color.lightest + " 0 0 0 1px inset,\n              " + polished.rgba(color.darkest, 0.4) + " 0 1px 9px 2px;\n          }\n          &:focus:hover {\n            box-shadow: " + color.lightest + " 0 0 0 1px inset,\n              " + polished.rgba(color.darkest, 0.2) + " 0 8px 18px 0px;\n          }\n      ";
+  });
+  function Button(props) {
+    var isLoading = props.isLoading,
+        loadingText = props.loadingText,
+        isLink = props.isLink,
+        children = props.children;
+    var btnType = React.useMemo(function () {
+      if (isLink) {
+        return "a";
+      }
+    }, [isLink]);
+    var buttonInner = React__default.createElement(React__default.Fragment, null, React__default.createElement(Text, null, children), isLoading && React__default.createElement(Loading, null, loadingText || "Loading...")); // return (
+    // <StyledButton as={btnType} {...props} data-testid="button">
+    //   {buttonInner}
+    // </StyledButton>
+    // )
+
+    return React__default.createElement(StyledButton, _extends({
+      as: btnType
+    }, props, {
+      "data-testid": "button"
+    }), buttonInner);
+  } // 默认参数
+
+  Button.defaultProps = {
+    isLoading: false,
+    loadingText: null,
+    isLink: false,
+    appearance: APPEARANCES.tertiary,
+    isDisabled: false,
+    isUnclickable: false,
+    containsIcon: false,
+    size: SIZES.medium,
+    ButtonWrapper: undefined
+  };
+
+  var icons = {
     mobile: "M648 64h-272c-66.274 0-120 53.726-120 120v656c0 66.274 53.726 120 120 120h272c66.274 0 120-53.726 120-120v-656c0-66.274-53.726-120-120-120zM376 144h272c22.056 0 40 17.944 40 40v495.968h-352v-495.968c0-22.056 17.946-40 40-40zM648 880h-272c-22.054 0-40-17.944-40-40v-80.032h352v80.032c0 22.056-17.944 40-40 40zM544.034 819.962c0 17.676-14.33 32.002-32.004 32.002-17.67 0-32-14.326-32-32.002 0-17.672 14.33-31.998 32-31.998 17.674-0 32.004 14.326 32.004 31.998z",
     watch: "M736.172 108.030c0-11.044-8.956-20-20-20h-408.282c-11.044 0-20 8.956-20 20 0 11.046 8.956 20 20 20h408.282c11.044 0 20-8.954 20-20zM736.172 50.37c0-11.044-8.956-20-20-20h-408.282c-11.044 0-20 8.956-20 20s8.956 20 20 20h408.282c11.044 0 20-8.956 20-20zM736.172 973.692c0-11.044-8.956-20-20-20h-408.282c-11.044 0-20 8.956-20 20s8.956 20 20 20h408.282c11.044 0 20-8.956 20-20zM736.172 916.030c0-11.044-8.956-20-20-20h-408.282c-11.044 0-20 8.956-20 20 0 11.046 8.956 20 20 20h408.282c11.044 0 20-8.954 20-20zM717.53 228c18.904 0 34.286 15.14 34.286 33.75v500.502c0 18.61-15.38 33.75-34.286 33.75h-411.43c-18.904 0-34.286-15.14-34.286-33.75v-500.502c0-18.61 15.38-33.75 34.286-33.75h411.43zM717.53 148h-411.43c-63.118 0-114.286 50.928-114.286 113.75v500.502c0 62.822 51.166 113.75 114.286 113.75h411.43c63.118 0 114.286-50.926 114.286-113.75v-500.502c-0.002-62.822-51.168-113.75-114.286-113.75v0zM680.036 511.53c0 22.090-17.91 40-40 40h-128.004c-5.384 0-10.508-1.078-15.196-3.006-0.124-0.048-0.254-0.086-0.376-0.132-0.61-0.262-1.188-0.57-1.782-0.86-0.572-0.276-1.16-0.528-1.718-0.828-0.204-0.112-0.39-0.246-0.594-0.364-0.918-0.514-1.832-1.050-2.704-1.64-0.086-0.058-0.164-0.128-0.254-0.188-10.492-7.21-17.382-19.284-17.382-32.98v-151.5c0-22.094 17.91-40 40.004-40 22.088 0 40 17.906 40 40v111.498h88c22.094-0.002 40.002 17.91 40.006 40z",
     tablet: "M200.022 927.988h624.018c1.38 0 2.746-0.072 4.090-0.208 20.168-2.050 35.91-19.080 35.91-39.792v-751.916c0-22.092-17.91-40-40-40h-624.018c-22.098 0-40 17.908-40 40v751.916c0 22.094 17.906 40 40 40zM512.002 878.206c-17.674 0-32.004-14.328-32.004-31.998 0-17.678 14.33-32.002 32.004-32.002 17.67 0 32 14.324 32 32.002 0 17.67-14.33 31.998-32 31.998zM240.022 176.078h544.018v591.902h-544.018v-591.902z",
@@ -154,5 +419,442 @@ export var icons = {
     contrast: "M368 713h79l266-266v-79L368 713zm192 0h153V560L560 713zm98-402h-79L311 579v79l347-347zm-192 0H311v155l155-155zm467 402V91H311v128h452c23 0 42 19 42 42v452h128zM713 933V805H261c-23 0-42-19-42-42V311H91v622h622zM982 0c23 0 42 19 42 42v721c0 23-19 42-42 42H805v177c0 23-19 42-42 42H42c-23 0-42-19-42-42V261c0-23 19-42 42-42h177V42c0-23 19-42 42-42h721z",
     unfold: "M512 645l8 1c21 4 37 22 37 44v181l52-52 6-6a45 45 0 0 1 58 69l-129 129-7 5a45 45 0 0 1-57-5L351 882l-5-6a45 45 0 0 1 5-57l7-6c17-12 41-10 57 6l52 52V690l1-8c4-21 22-37 44-37zM337 275a45 45 0 1 1 0 90H229l91 102h382l91-102H685a45 45 0 1 1 0-90h208c39 0 59 46 34 75L782 512l145 162c25 29 5 75-34 75H685a45 45 0 1 1 0-90h108l-91-102H320l-91 102h108a45 45 0 1 1 0 90H129c-38 0-59-46-33-75l144-162L96 350c-24-27-8-69 26-74l7-1h208zM537 8l7 6 129 129a45 45 0 0 1-58 68l-6-5-52-52v181c0 22-16 40-37 44h-8c-22 0-40-15-44-36l-1-8V153l-52 53a45 45 0 0 1-57 5l-7-5a45 45 0 0 1-5-57l5-6L480 14c16-16 40-18 57-6z",
     sharealt: "M130 85h332a45 45 0 0 1 8 89l-8 1H175v674h674V557a45 45 0 0 1 89-8l1 8v337c0 22-16 40-37 44l-8 1H130c-22 0-40-16-44-37l-1-8V130c0-22 16-40 37-44l8-1h332-332zm555 0h210l5 1-6-1a45 45 0 0 1 32 13l-5-4 3 3 2 1a46 46 0 0 1 12 24v2l1 5v209a45 45 0 0 1-89 8l-1-8V238L544 544a45 45 0 0 1-57 5l-7-5a45 45 0 0 1 0-64l306-305H685a45 45 0 0 1-8-89l8-1h209-209z",
-    accessibility: "M512 0a512 512 0 110 1024A512 512 0 01512 0zm0 89.6a422.4 422.4 0 100 844.8 422.4 422.4 0 000-844.8zm262.2 250a40.9 40.9 0 01-27.5 49.3l-169.1 50.7c-8.2 2.7-15.1 11-13.7 20.5 1.3 27.4 1.5 76.5 7 98.4 12.9 59 82.4 214.4 91 233.6a56 56 0 014.9 19 40 40 0 01-40 40c-18 0-30.3-12.7-38.2-28.4A34096 34096 0 01510.9 664l-77.7 165.7-1.3 2.1a40 40 0 01-69.3-39.7c8.6-19 78-174.5 90.8-233.6 5.5-21.9 6-71 7.3-98.4a21 21 0 00-13.7-20.5l-169.1-50.7a40.7 40.7 0 01-27.5-50.7c6.9-20.5 30.2-30.1 50.9-24.6 0 0 154.6 49.3 209.6 49.3s213.8-50.7 213.8-50.7c20.6-5.5 44 6.8 49.5 27.4zm-264-171.2a76.7 76.7 0 110 153.4c-42.6 0-77-34.2-77-76.7 0-41 34.4-76.7 77-76.7z",
-};
+    accessibility: "M512 0a512 512 0 110 1024A512 512 0 01512 0zm0 89.6a422.4 422.4 0 100 844.8 422.4 422.4 0 000-844.8zm262.2 250a40.9 40.9 0 01-27.5 49.3l-169.1 50.7c-8.2 2.7-15.1 11-13.7 20.5 1.3 27.4 1.5 76.5 7 98.4 12.9 59 82.4 214.4 91 233.6a56 56 0 014.9 19 40 40 0 01-40 40c-18 0-30.3-12.7-38.2-28.4A34096 34096 0 01510.9 664l-77.7 165.7-1.3 2.1a40 40 0 01-69.3-39.7c8.6-19 78-174.5 90.8-233.6 5.5-21.9 6-71 7.3-98.4a21 21 0 00-13.7-20.5l-169.1-50.7a40.7 40.7 0 01-27.5-50.7c6.9-20.5 30.2-30.1 50.9-24.6 0 0 154.6 49.3 209.6 49.3s213.8-50.7 213.8-50.7c20.6-5.5 44 6.8 49.5 27.4zm-264-171.2a76.7 76.7 0 110 153.4c-42.6 0-77-34.2-77-76.7 0-41 34.4-76.7 77-76.7z"
+  };
+
+  function _templateObject2$1() {
+    var data = _taggedTemplateLiteralLoose(["\n\tfill: ", ";\n"]);
+
+    _templateObject2$1 = function _templateObject2() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject$3() {
+    var data = _taggedTemplateLiteralLoose(["\n\tdisplay: ", ";\n\tvertical-align: middle;\n\tshape-rendering: inherit;\n\ttransform: translate3d(0, 0, 0);\n"]);
+
+    _templateObject$3 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+  var Svg = styled__default.svg(_templateObject$3(), function (props) {
+    return props.block ? "block" : "inline-block";
+  });
+  var Path = styled__default.path(_templateObject2$1(), function (props) {
+    return props.color;
+  });
+  function Icon(props) {
+    var block = props.block,
+        icon = props.icon,
+        color = props.color;
+    return React__default.createElement(Svg, Object.assign({
+      viewBox: "0 0 1024 1024",
+      width: "20px",
+      height: "20px",
+      block: block
+    }, props), React__default.createElement(Path, {
+      d: icons[icon],
+      color: color
+    }));
+  }
+  Icon.defaultProps = {
+    block: false,
+    color: "black"
+  };
+
+  function _templateObject9() {
+    var data = _taggedTemplateLiteralLoose(["\n    font-size: ", "px;\n    line-height: ", "px;\n  "]);
+
+    _templateObject9 = function _templateObject9() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject8() {
+    var data = _taggedTemplateLiteralLoose(["\n    font-size: ", "px;\n    line-height: ", "px;\n  "]);
+
+    _templateObject8 = function _templateObject8() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject7() {
+    var data = _taggedTemplateLiteralLoose(["\n    font-size: ", "px;\n    line-height: ", "px;\n  "]);
+
+    _templateObject7 = function _templateObject7() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject6() {
+    var data = _taggedTemplateLiteralLoose(["\n  color: ", ";\n  text-align: center;\n\n  font-size: ", "px;\n  line-height: ", "px;\n\n  ", "\n\n  ", "\n\n  ", "\n"]);
+
+    _templateObject6 = function _templateObject6() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject5() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tbackground: ", ";\n\t\t"]);
+
+    _templateObject5 = function _templateObject5() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject4() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\theight: ", "px;\n\t\t\twidth: ", "px;\n\t\t\tline-height: ", "px;\n\t\t"]);
+
+    _templateObject4 = function _templateObject4() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject3$1() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\theight: ", "px;\n\t\t\twidth: ", "px;\n\t\t\tline-height: ", "px;\n\t\t"]);
+
+    _templateObject3$1 = function _templateObject3() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject2$2() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\theight: ", "px;\n\t\t\twidth: ", "px;\n\t\t\tline-height: ", "px;\n\t\t"]);
+
+    _templateObject2$2 = function _templateObject2() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject$4() {
+    var data = _taggedTemplateLiteralLoose(["\n  background: ", ";\n  border-radius: 50%;\n  display: inline-block;\n  vertical-align: top;\n  overflow: hidden;\n  text-transform: uppercase;\n\n  height: ", "px;\n  width: ", "px;\n  line-height: ", "px;\n\n  ", "\n\n  ", "\n\n  ", "\n\n  ", "\n\n  img {\n    width: 100%;\n    height: auto;\n    display: block;\n  }\n\n  svg {\n    position: relative;\n    bottom: -2px;\n    height: 100%;\n    width: 100%;\n    vertical-align: top;\n  }\n\n  path {\n    fill: ", ";\n    animation: ", " 1.5s ease-in-out infinite;\n  }\n"]);
+
+    _templateObject$4 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+
+  var AvatarSize = {
+    large: 40,
+    medium: 28,
+    small: 20,
+    tiny: 16
+  }; // 样式
+
+  var Image = styled__default.div(_templateObject$4(), function (props) {
+    return !props.isLoading ? "transparent" : color.light;
+  }, AvatarSize.medium, AvatarSize.medium, AvatarSize.medium, function (props) {
+    return props.size === "tiny" && styled.css(_templateObject2$2(), AvatarSize.tiny, AvatarSize.tiny, AvatarSize.tiny);
+  }, function (props) {
+    return props.size === "small" && styled.css(_templateObject3$1(), AvatarSize.small, AvatarSize.small, AvatarSize.small);
+  }, function (props) {
+    return props.size === "large" && styled.css(_templateObject4(), AvatarSize.large, AvatarSize.large, AvatarSize.large);
+  }, function (props) {
+    return !props.src && styled.css(_templateObject5(), !props.isLoading && "#37D5D3");
+  }, color.medium, glow);
+  var Initial = styled__default.div(_templateObject6(), color.lightest, typography.size.s2, AvatarSize.medium, function (props) {
+    return props.size === "tiny" && styled.css(_templateObject7(), parseFloat(typography.size.s1) - 2, AvatarSize.tiny);
+  }, function (props) {
+    return props.size === "small" && styled.css(_templateObject8(), typography.size.s1, AvatarSize.small);
+  }, function (props) {
+    return props.size === "large" && styled.css(_templateObject9(), typography.size.s3, AvatarSize.large);
+  });
+  function Avatar(props) {
+    var isLoading = props.isLoading,
+        src = props.src,
+        username = props.username,
+        size = props.size;
+    var avatarFigure = React.useMemo(function () {
+      var avatarFigure = React__default.createElement(Icon, {
+        icon: "useralt"
+      });
+
+      if (isLoading) ; else if (src) {
+        avatarFigure = React__default.createElement("img", {
+          src: src,
+          alt: username,
+          "data-testid": "avatar-img"
+        });
+      } else {
+        avatarFigure = React__default.createElement(Initial, {
+          size: size,
+          "aria-hidden": "true"
+        }, username.substring(0, 1));
+      }
+
+      return avatarFigure;
+    }, [isLoading, size, src, username]);
+    return React__default.createElement(Image, Object.assign({
+      size: size,
+      isLoading: isLoading,
+      src: src
+    }, props, {
+      "data-testid": "avatar-div"
+    }), avatarFigure);
+  }
+  Avatar.defaultProps = {
+    isLoading: false,
+    username: "loading",
+    src: null,
+    size: "medium"
+  };
+
+  function _templateObject6$1() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
+
+    _templateObject6$1 = function _templateObject6() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject5$1() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
+
+    _templateObject5$1 = function _templateObject5() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject4$1() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
+
+    _templateObject4$1 = function _templateObject4() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject3$2() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
+
+    _templateObject3$2 = function _templateObject3() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject2$3() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
+
+    _templateObject2$3 = function _templateObject2() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject$5() {
+    var data = _taggedTemplateLiteralLoose(["\n\tdisplay: inline-block;\n\tvertical-align: top;\n\tfont-size: 11px;\n\tline-height: 12px;\n\tpadding: 4px 12px;\n\tborder-radius: 3em;\n\tfont-weight: ", ";\n\n\tsvg {\n\t\theight: 12px;\n\t\twidth: 12px;\n\t\tmargin-right: 4px;\n\t\tmargin-top: -2px;\n\t}\n\n\t", ";\n\n\t", ";\n\n\t", ";\n\n\t", ";\n\n\t", ";\n"]);
+
+    _templateObject$5 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+
+  var badgeColor = {
+    positive: color.positive,
+    negative: color.negative,
+    neutral: color.dark,
+    warning: color.warning,
+    error: color.lightest
+  };
+  var badgeBackground = {
+    positive: background.positive,
+    negative: background.negative,
+    neutral: color.mediumlight,
+    warning: background.warning,
+    error: color.negative
+  };
+  var BadgeWrapper = styled__default.div(_templateObject$5(), typography.weight.bold, function (props) {
+    return props.status === "positive" && styled.css(_templateObject2$3(), badgeColor.positive, badgeBackground.positive);
+  }, function (props) {
+    return props.status === "negative" && styled.css(_templateObject3$2(), badgeColor.negative, badgeBackground.negative);
+  }, function (props) {
+    return props.status === "warning" && styled.css(_templateObject4$1(), badgeColor.warning, badgeBackground.warning);
+  }, function (props) {
+    return props.status === "error" && styled.css(_templateObject5$1(), badgeColor.error, badgeBackground.error);
+  }, function (props) {
+    return props.status === "neutral" && styled.css(_templateObject6$1(), badgeColor.neutral, badgeBackground.neutral);
+  });
+  function Badge(props) {
+    return React__default.createElement(BadgeWrapper, Object.assign({}, props));
+  }
+  Badge.defaultProps = {
+    status: "neutral"
+  };
+
+  function _templateObject7$1() {
+    var data = _taggedTemplateLiteralLoose(["\n\tfont-weight: ", ";\n\tfont-size: ", "px;\n\tcolor: ", ";\n\tmargin-left: 6px;\n\theight: 1em;\n\tdisplay: flex;\n\talign-items: center;\n"]);
+
+    _templateObject7$1 = function _templateObject7() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject6$2() {
+    var data = _taggedTemplateLiteralLoose(["\n\tmargin: 0 0.4em 0 0;\n\tfont-size: initial;\n\topacity: 0;\n\n\t& + span {\n\t\t&:before,\n\t\t&:after {\n\t\t\tposition: absolute;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\theight: 1em;\n\t\t\twidth: 1em;\n\t\t\tcontent: \"\";\n\t\t\tdisplay: block;\n\t\t\tborder-radius: 3em;\n\t\t}\n\t}\n\n\t& + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset;\n\t}\n\n\t&:focus + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset;\n\t}\n\n\t&:checked + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset;\n\t}\n\n\t&:checked:focus + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset,\n\t\t\t", " 0 0 5px 2px;\n\t}\n\n\t& + span:after {\n\t\ttransition: all 150ms ease-out;\n\t\ttransform: scale3d(0, 0, 1);\n\n\t\theight: 10px;\n\t\tmargin-left: 2px;\n\t\tmargin-top: 2px;\n\t\twidth: 10px;\n\n\t\topacity: 0;\n\t}\n\n\t&:checked + span:after {\n\t\ttransform: scale3d(1, 1, 1);\n\t\tbackground: ", ";\n\t\topacity: 1;\n\t}\n"]);
+
+    _templateObject6$2 = function _templateObject6() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject5$2() {
+    var data = _taggedTemplateLiteralLoose(["\n\tdisplay: flex;\n\talign-items: center;\n\tflex-wrap: wrap;\n"]);
+
+    _templateObject5$2 = function _templateObject5() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject4$2() {
+    var data = _taggedTemplateLiteralLoose(["\n\tfont-size: ", "px;\n\tfont-weight: ", ";\n\tcolor: ", ";\n\tmargin-top: 4px;\n\tmargin-left: calc(", "px + 0.4em);\n\twidth: 100%;\n"]);
+
+    _templateObject4$2 = function _templateObject4() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject3$3() {
+    var data = _taggedTemplateLiteralLoose(["\n\t\t\tborder: 0px !important;\n\t\t\tclip: rect(0 0 0 0) !important;\n\t\t\t-webkit-clip-path: inset(100%) !important;\n\t\t\tclip-path: inset(100%) !important;\n\t\t\theight: 1px !important;\n\t\t\toverflow: hidden !important;\n\t\t\tpadding: 0px !important;\n\t\t\tposition: absolute !important;\n\t\t\twhite-space: nowrap !important;\n\t\t\twidth: 1px !important;\n\t\t"]);
+
+    _templateObject3$3 = function _templateObject3() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject2$4() {
+    var data = _taggedTemplateLiteralLoose(["\n\t", "\n"]);
+
+    _templateObject2$4 = function _templateObject2() {
+      return data;
+    };
+
+    return data;
+  }
+
+  function _templateObject$6() {
+    var data = _taggedTemplateLiteralLoose(["\n\tcursor: ", ";\n\tfont-size: ", "px;\n\tfont-weight: ", ";\n\tposition: relative;\n\theight: 1em;\n\tdisplay: flex;\n\talign-items: center;\n\topacity: ", ";\n"]);
+
+    _templateObject$6 = function _templateObject() {
+      return data;
+    };
+
+    return data;
+  }
+  var Label = styled__default.label(_templateObject$6(), function (props) {
+    return props.disabled ? "not-allowed" : "pointer";
+  }, typography.size.s2, typography.weight.bold, function (props) {
+    return props.disabled ? 0.5 : 1;
+  });
+  var OptionalText = styled__default.span(_templateObject2$4(), function (props) {
+    return props.hideLabel && styled.css(_templateObject3$3());
+  });
+  var Description = styled__default.div(_templateObject4$2(), typography.size.s1, typography.weight.regular, color.mediumdark, typography.size.s2);
+  var RadioWrapper = styled__default.div(_templateObject5$2());
+  var Input = styled__default.input(_templateObject6$2(), color.mediumdark, function (props) {
+    return color[props.appearance];
+  }, function (props) {
+    return color[props.appearance];
+  }, function (props) {
+    return color[props.appearance];
+  }, function (props) {
+    return polished.rgba(color[props.appearance], 0.3);
+  }, function (props) {
+    return color[props.appearance];
+  });
+  var Error = styled__default.span(_templateObject7$1(), typography.weight.regular, typography.size.s2, color.negative);
+  function Radio(props) {
+    var wrapperClass = props.wrapperClass,
+        error = props.error,
+        description = props.description,
+        label = props.label,
+        hideLabel = props.hideLabel,
+        style = props.style,
+        restProps = _objectWithoutPropertiesLoose(props, ["wrapperClass", "error", "description", "label", "hideLabel", "style"]);
+
+    var disabled = props.disabled;
+    return React__default.createElement(RadioWrapper, {
+      className: wrapperClass,
+      style: style
+    }, React__default.createElement(Label, {
+      disabled: disabled
+    }, React__default.createElement(Input, Object.assign({}, restProps, {
+      role: "radio",
+      "aria-invalid": !!error,
+      type: "radio"
+    })), React__default.createElement("span", null, React__default.createElement(OptionalText, {
+      hideLabel: hideLabel
+    }, label))), error && React__default.createElement(Error, null, error), description && React__default.createElement(Description, null, description));
+  }
+  Radio.defaultProps = {
+    appearance: "primary",
+    hideLabel: false
+  };
+
+  exports.APPEARANCES = APPEARANCES;
+  exports.Avatar = Avatar;
+  exports.AvatarSize = AvatarSize;
+  exports.Badge = Badge;
+  exports.Button = Button;
+  exports.GlobalStyle = GlobalStyle;
+  exports.Icon = Icon;
+  exports.Loading = Loading;
+  exports.Radio = Radio;
+  exports.SIZES = SIZES;
+  exports.StyledButton = StyledButton;
+  exports.Text = Text;
+  exports.background = background;
+  exports.badgeBackground = badgeBackground;
+  exports.badgeColor = badgeColor;
+  exports.breakpoint = breakpoint;
+  exports.btnPadding = btnPadding;
+  exports.color = color;
+  exports.easing = easing;
+  exports.glow = glow;
+  exports.pageMargin = pageMargin;
+  exports.spacing = spacing;
+  exports.typography = typography;
+
+})));
+//# sourceMappingURL=atom-design-explorer.umd.js.map
