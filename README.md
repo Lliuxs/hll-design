@@ -70,3 +70,5 @@
   - 在项目根目录下的 node_modules 文件夹中找到要修改依赖包的相关文件 修改，然后回到根目录执行 yarn patch-package package-name
   - 打补丁yarn patch-package
   - 部署 "postinstall": "patch-package"
+
+10. 添加sponsor按钮
