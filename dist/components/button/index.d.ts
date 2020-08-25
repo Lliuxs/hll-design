@@ -138,7 +138,7 @@ export declare function Button(props: PropsWithChildren<ButtonProps>): React.DOM
     'aria-posinset'?: number | undefined;
     'aria-pressed'?: boolean | "true" | "false" | "mixed" | undefined;
     'aria-readonly'?: boolean | "true" | "false" | undefined;
-    'aria-relevant'?: "text" | "additions" | "additions text" | "all" | "removals" | undefined;
+    'aria-relevant'?: "text" | "additions" | "additions removals" | "additions text" | "all" | "removals" | "removals additions" | "removals text" | "text additions" | "text removals" | undefined;
     'aria-required'?: boolean | "true" | "false" | undefined;
     'aria-roledescription'?: string | undefined;
     'aria-rowcount'?: number | undefined;

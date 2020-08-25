@@ -1,3 +1,6 @@
+[![Coverage Status](https://coveralls.io/repos/github/Lliuxs/hll-react-ui/badge.svg?branch=master)](https://coveralls.io/github/Lliuxs/hll-react-ui?branch=master)
+
+
 1. 项目初始化
   - create-react-app  hll-design --template typescript
   - cd hll-design
@@ -30,6 +33,13 @@
     2. 或者引入import { fireEvent } from "@testing-library/dom" 声明declare module '@testing-library/dom'
   - 测试覆盖率
     - npm run coverage 详细信息 npx http-server ./coverage
+    - https://coveralls.io/
+      1. 选择github项目
+      2. 进入详请找到token
+      3. 在项目的secrets中设置COVERALLS_REPO_TOKEN
+      4. 安装coveralls yarn add coveralls 添加script脚本 
+      5. 添加yml action
+      6. 在readme中添加embed
 
 6. 发布npm包
     - tsconfig.build.json作为输出配置文件
@@ -46,4 +56,10 @@
   - http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html
   - storybook可以生成静态页面 增加脚本 "build-storybook": "build-storybook --no-dll --quiet"
   1. 在github项目的设置中的Secret中添加name为ACCESS_TOKEN值为生成的token
-  2. 添加Actions
+  2. 添加Actions 创建yml文件
+  3. git pull git push 会自动部署github page页面
+
+
+8. 代码因子
+  - https://www.codefactor.io/ 
+  - import需要检测的仓库

@@ -1,6 +1,7 @@
 {
   "name": "hll-react-ui",
   "version": "0.0.1",
+  "license": "MIT",
   "description": "react-ui",
   "private": false,
   "dependencies": {
@@ -11,12 +12,15 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "coveralls": "^3.1.0",
+    "hll-react-ui": "^1.0.1",
     "polished": "^3.6.5",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
+    "styled-components": "^5.1.1",
     "typescript": "~3.7.2"
   },
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "react-scripts start",
     "build": "tsc -p tsconfig.build.json",
@@ -24,8 +28,11 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "coverage": "react-scripts test --coverage --watchAll=false",
-    "build-storybook": "build-storybook --no-dll --quiet"
+    "build-storybook": "build-storybook --no-dll --quiet",
+    "coverall": "npm run coverage  && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
+  "sideEffects": false,
+  "repository": "https://github.com/Lliuxs/hll-react-ui",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@Lliuxs"
   },
@@ -39,9 +46,6 @@
   "files": [
     "dist"
   ],
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "sideEffects": false,
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -59,23 +63,22 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
-    "@storybook/addon-a11y": "^6.0.16",
-    "@storybook/addon-actions": "^6.0.16",
-    "@storybook/addon-essentials": "^6.0.16",
-    "@storybook/addon-knobs": "^6.0.16",
-    "@storybook/addon-links": "^6.0.16",
-    "@storybook/addon-storysource": "^6.0.16",
-    "@storybook/node-logger": "^6.0.16",
+    "@storybook/addon-a11y": "^6.0.17",
+    "@storybook/addon-actions": "^6.0.17",
+    "@storybook/addon-essentials": "^6.0.17",
+    "@storybook/addon-knobs": "^6.0.17",
+    "@storybook/addon-links": "^6.0.17",
+    "@storybook/addon-storysource": "^6.0.17",
+    "@storybook/node-logger": "^6.0.17",
     "@storybook/preset-create-react-app": "^3.1.4",
-    "@storybook/react": "^6.0.16",
+    "@storybook/react": "^6.0.17",
     "@types/styled-components": "^5.1.2",
     "babel-loader": "^8.1.0",
-    "react-is": "^16.13.1",
-    "styled-components": "^5.1.1"
+    "react-is": "^16.13.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "styled-components": "^5.1.1"
   }
 }
