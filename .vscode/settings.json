@@ -1,10 +1,13 @@
 {
   "cSpell.words": [
+    "Boxshadow",
     "Lliuxs",
     "Nunito",
     "PREFILGHT",
     "Unclickable",
+    "animatein",
     "atrule",
+    "classname",
     "disablefn",
     "docgen",
     "dockgen",
@@ -17,7 +20,9 @@
     "mediumdark",
     "mediumlight",
     "microbundle",
+    "newmap",
     "prismjs",
+    "resizefunc",
     "seafoam",
     "storysource",
     "testclass",
@@ -25,6 +30,9 @@
     "testid",
     "testprops",
     "textfield",
+    "trender",
+    "trun",
+    "unmount",
     "useralt"
   ]
 }

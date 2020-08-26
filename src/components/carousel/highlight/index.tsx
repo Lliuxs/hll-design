@@ -3,7 +3,7 @@ import React from "react";
 import { useRef, useEffect } from "react";
 import { PropsWithChildren } from "react";
 import styled from "styled-components";
-import { color } from "../shared/styles";
+import { color } from "../../shared/styles";
 
 // 使用require是避免被treeShaking
 
