@@ -1,5 +1,5 @@
 import styled, { createGlobalStyle, keyframes, css } from 'styled-components';
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect, useRef } from 'react';
 import { rgba, darken, opacify } from 'polished';
 
 function _extends() {
@@ -828,5 +828,313 @@ Radio.defaultProps = {
   hideLabel: false
 };
 
-export { APPEARANCES, Avatar, AvatarSize, Badge, Button, GlobalStyle, Icon, Loading, Radio, SIZES, StyledButton, Text, background, badgeBackground, badgeColor, breakpoint, btnPadding, color, easing, glow, pageMargin, spacing, typography };
+function _templateObject2$5() {
+  var data = _taggedTemplateLiteralLoose(["\n\tbox-shadow: ", ";\n\tpadding: 10px;\n\tborder-radius: 5px;\n"]);
+
+  _templateObject2$5 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$7() {
+  var data = _taggedTemplateLiteralLoose(["\n\t", "\n\t", "\n\t", "\n\t", "\n"]);
+
+  _templateObject$7 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var Transition = styled.div(_templateObject$7(), function (props) {
+  return !props.animatein && props.direction === "left" && "\n\t\ttransform: translateX(" + props.width + "px);\n\t\t";
+}, function (props) {
+  return !props.animatein && props.direction === "right" && "\n\t\ttransform: translateX(-" + props.width + "px);\n\t\t";
+}, function (props) {
+  return props.animatein && props.direction === "left" && "\n\t\ttransform: translateX(0);\n\t\t\ttransition: all " + props.delay / 1000 + "s ease;\n\t\t";
+}, function (props) {
+  return props.animatein && props.direction === "right" && "\n\t\ttransform: translateX(0);\n\t\ttransition: all " + props.delay / 1000 + "s ease;\n\t\t";
+});
+var Wrapper = styled.div(_templateObject2$5(), function (props) {
+  return props.viewportBoxshadow;
+}); // 设置当前
+
+function currentSetMap(current, map) {
+  var mid = map[1];
+
+  if (mid === current) {
+    return map;
+  } else if (mid < current) {
+    return [mid, current, -1];
+  } else {
+    return [-1, current, mid];
+  }
+}
+
+function mapToState(map, children, totalLen) {
+  if (totalLen <= 1) {
+    return [null, children, null];
+  } else {
+    return map.map(function (v) {
+      if (v === -1) {
+        return null;
+      } else {
+        var child = children;
+        return child[v];
+      }
+    });
+  }
+} // 自动播放
+
+
+function toMove(right, totalLen, indexMap, setIndexMap) {
+  var y;
+
+  if (right) {
+    if (indexMap[1] < totalLen - 1) {
+      y = indexMap[1] + 1;
+    } else {
+      y = 0;
+    }
+  } else {
+    if (indexMap[1] === 0) {
+      y = totalLen - 1;
+    } else {
+      y = indexMap[1] - 1;
+    }
+  }
+
+  setIndexMap(currentSetMap(y, indexMap));
+}
+
+function Carousel(props) {
+  var defaultIndex = props.defaultIndex,
+      height = props.height,
+      autoplayDelay = props.autoplayDelay,
+      delay = props.delay,
+      animationDelay = props.animationDelay,
+      autoplay = props.autoplay,
+      autoplayReverse = props.autoplayReverse,
+      radioAppear = props.radioAppear,
+      touchDiff = props.touchDiff,
+      viewportBoxshadow = props.viewportBoxshadow,
+      style = props.style,
+      classname = props.classname,
+      width = props.width; // 设置需要展示的元素
+
+  var _useState = useState([]),
+      state = _useState[0],
+      setState = _useState[1]; // 设置显示索引用
+
+
+  var _useState2 = useState([-1, -1, -1]),
+      indexMap = _useState2[0],
+      setIndexMap = _useState2[1]; // 控制方向进出用
+
+
+  var _useState3 = useState({
+    animatein: true,
+    direction: ""
+  }),
+      animation = _useState3[0],
+      setAnimation = _useState3[1]; // 设置宽度用
+
+
+  var _useState4 = useState(),
+      bound = _useState4[0],
+      setBound = _useState4[1];
+
+  var totalLen = useMemo(function () {
+    var len;
+
+    if (props.children instanceof Array) {
+      len = props.children.length;
+    } else {
+      len = 1;
+    }
+
+    return len;
+  }, [props.children]);
+  useMemo(function () {
+    var map = [-1, -1, -1];
+    map[1] = defaultIndex;
+    var res = mapToState(map, props.children, totalLen);
+    setState(res);
+    setIndexMap(map);
+  }, [defaultIndex, props.children, totalLen]);
+  useEffect(function () {
+    var child = props.children;
+    var timer;
+
+    if (child) {
+      var tmp = indexMap.map(function (v) {
+        return v !== -1 ? child[v] : null;
+      });
+      var sign;
+      setState(tmp); //后setState会有补足问题必须先设
+
+      if (indexMap[0] === -1 && indexMap[2] === -1) {
+        //首轮
+        return;
+      } else if (indexMap[0] === -1) {
+        sign = true;
+        setAnimation({
+          animatein: false,
+          direction: "right"
+        });
+      } else {
+        sign = false;
+        setAnimation({
+          animatein: false,
+          direction: "left"
+        });
+      }
+
+      timer = window.setTimeout(function () {
+        if (sign) {
+          setAnimation({
+            animatein: true,
+            direction: "right"
+          });
+        } else {
+          setAnimation({
+            animatein: true,
+            direction: "left"
+          });
+        }
+      }, delay);
+    }
+
+    return function () {
+      return window.clearTimeout(timer);
+    };
+  }, [delay, indexMap, props.children]);
+  var ref = useRef(null);
+  useEffect(function () {
+    var setBoundFunc = function setBoundFunc() {
+      if (ref.current) {
+        var bounds = ref.current.getBoundingClientRect();
+        setBound(bounds);
+      }
+    };
+
+    setBoundFunc();
+
+    var resizefunc = function resizefunc() {
+      setBoundFunc();
+    };
+
+    window.addEventListener("resize", resizefunc);
+    return function () {
+      window.removeEventListener("resize", resizefunc);
+    };
+  }, []);
+  useEffect(function () {
+    var timer;
+
+    if (autoplay) {
+      timer = window.setTimeout(function () {
+        toMove(!autoplayReverse, totalLen, indexMap, setIndexMap);
+      }, autoplayDelay);
+    }
+
+    return function () {
+      return window.clearTimeout(timer);
+    };
+  }, [autoplayDelay, indexMap, totalLen, autoplay, autoplayReverse]); // 移动端事件
+
+  var _useState5 = useState(0),
+      start = _useState5[0],
+      setStart = _useState5[1];
+
+  var touchStart = function touchStart(e) {
+    setStart(e.touches[0].clientX);
+  };
+
+  var touchEnd = function touchEnd(e) {
+    var end = e.changedTouches[0].clientX;
+    var val = end - start;
+    var abs = Math.abs(val);
+
+    if (abs > touchDiff) {
+      //说明可以进一步判断
+      if (val > 0) {
+        //从左往右 向左翻
+        toMove(false, totalLen, indexMap, setIndexMap);
+      } else {
+        toMove(true, totalLen, indexMap, setIndexMap);
+      }
+    }
+  };
+
+  return React.createElement(Wrapper, {
+    ref: ref,
+    style: style,
+    className: classname,
+    viewportBoxshadow: viewportBoxshadow
+  }, React.createElement("div", {
+    className: "viewport",
+    style: {
+      width: "100%",
+      height: height + "px",
+      overflow: "hidden",
+      position: "relative"
+    },
+    onTouchStart: touchStart,
+    onTouchEnd: touchEnd
+  }, React.createElement(Transition, {
+    animatein: animation.animatein,
+    direction: animation.direction,
+    delay: animationDelay,
+    width: width
+  }, React.createElement("div", {
+    style: {
+      display: "flex",
+      width: (bound == null ? void 0 : bound.width) * 3 + "px",
+      position: "absolute",
+      left: -(bound == null ? void 0 : bound.width) + "px"
+    }
+  }, state.map(function (v, i) {
+    return React.createElement("div", {
+      key: i,
+      style: {
+        height: height + "px",
+        width: (bound == null ? void 0 : bound.width) + "px"
+      }
+    }, v);
+  })))), React.createElement("ul", {
+    style: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center"
+    }
+  }, new Array(totalLen).fill(1).map(function (x, y) {
+    return React.createElement(Radio, {
+      label: "",
+      appearance: radioAppear,
+      key: y,
+      hideLabel: true,
+      value: 0,
+      checked: y === indexMap[1],
+      onChange: function onChange() {},
+      onClick: function onClick() {
+        var newmap = currentSetMap(y, indexMap);
+        setIndexMap(newmap);
+      }
+    });
+  })));
+}
+Carousel.defaultProps = {
+  defaultIndex: 0,
+  delay: 100,
+  height: 200,
+  autoplay: true,
+  autoplayDelay: 5000,
+  animationDelay: 1000,
+  touchDiff: 10
+};
+
+export { APPEARANCES, Avatar, AvatarSize, Badge, Button, Carousel, GlobalStyle, Icon, Loading, Radio, SIZES, StyledButton, Text, background, badgeBackground, badgeColor, breakpoint, btnPadding, color, easing, glow, pageMargin, spacing, typography };
 //# sourceMappingURL=atom-design-explorer.modern.js.map
