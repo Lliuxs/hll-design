@@ -254,74 +254,76 @@ describe("test Carousel component", () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	it("should trun the page when touch", () => {
-		act(() => {
-			render(testTouch(), container);
-		});
-		let text1 = container.querySelector("#test1");
-		let text2 = container.querySelector("#test2");
-		fireEvent.touchStart(text1!, { touches: [{ clientX: 20 }] });
-		fireEvent.touchEnd(text1!, { changedTouches: [{ clientX: 130 }] });
-		// 向前翻 1-3
-		let text3 = container.querySelector("#test3");
-		text2 = container.querySelector("#test2");
-		expect(text3).toBeTruthy();
-		expect(text2).toBeNull();
+	// it("should trun the page when touch", () => {
+	// 	act(() => {
+	// 		render(testTouch(), container);
+	// 	});
+	// 	let text1 = container.querySelector("#test1");
+	// 	let text2 = container.querySelector("#test2");
+	// 	fireEvent.touchStart(text1!, { touches: [{ clientX: 20 }] });
+	// 	fireEvent.touchEnd(text1!, { changedTouches: [{ clientX: 130 }] });
+	// 	// 向前翻 1-3
+	// 	let text3 = container.querySelector("#test3");
+	// 	text2 = container.querySelector("#test2");
+	// 	expect(text3).toBeTruthy();
+	// 	expect(text2).toBeNull();
 
-		// 3-》2
-		fireEvent.touchStart(text3!, { touches: [{ clientX: 20 }] });
-		fireEvent.touchEnd(text3!, { changedTouches: [{ clientX: 130 }] });
-		text2 = container.querySelector("#test2");
-		expect(text2).toBeTruthy();
-		text1 = container.querySelector("#test1");
-		expect(text1).toBeNull();
+	// 	// 3-》2
+	// 	fireEvent.touchStart(text3!, { touches: [{ clientX: 20 }] });
+	// 	fireEvent.touchEnd(text3!, { changedTouches: [{ clientX: 130 }] });
+	// 	text2 = container.querySelector("#test2");
+	// 	expect(text2).toBeTruthy();
+	// 	text1 = container.querySelector("#test1");
+	// 	expect(text1).toBeNull();
 
-		// 2-1
-		fireEvent.touchStart(text2!, { touches: [{ clientX: 20 }] });
-		fireEvent.touchEnd(text2!, { changedTouches: [{ clientX: 130 }] });
-		text1 = container.querySelector("#test1");
-		expect(text1).toBeTruthy();
-		text3 = container.querySelector("#test3");
-		expect(text3).toBeNull();
-		//向后翻 1-》2
-		fireEvent.touchStart(text1!, { touches: [{ clientX: 130 }] });
-		fireEvent.touchEnd(text1!, { changedTouches: [{ clientX: 20 }] });
-		text1 = container.querySelector("#test1");
-		expect(text1).toBeTruthy();
-		text2 = container.querySelector("#test2");
-		expect(text2).toBeTruthy();
-		text3 = container.querySelector("#test3");
-		expect(text3).toBeNull();
-		//2-3
-		fireEvent.touchStart(text2!, { touches: [{ clientX: 130 }] });
-		fireEvent.touchEnd(text2!, { changedTouches: [{ clientX: 20 }] });
-		text1 = container.querySelector("#test1");
-		expect(text1).toBeNull();
-		text2 = container.querySelector("#test2");
-		expect(text2).toBeTruthy();
-		text3 = container.querySelector("#test3");
-		expect(text3).toBeTruthy();
-		//不变
-		fireEvent.touchStart(text2!, { touches: [{ clientX: 130 }] });
-		fireEvent.touchEnd(text2!, { changedTouches: [{ clientX: 120 }] });
-		text1 = container.querySelector("#test1");
-		expect(text1).toBeNull();
-		text2 = container.querySelector("#test2");
-		expect(text2).toBeTruthy();
-		text3 = container.querySelector("#test3");
-		expect(text3).toBeTruthy();
-	});
-	it("should render one item", () => {
-		const wrapper = trender(testOneItem());
-		expect(wrapper).toMatchSnapshot();
-	});
-	it("should test resize", async () => {
-		act(() => {
-			render(testResize(), container);
-		});
-		act(() => {
-			window.dispatchEvent(new Event("resize"));
-		});
-		expect(container).toMatchSnapshot();
-	});
+	// 	// 2-1
+	// 	fireEvent.touchStart(text2!, { touches: [{ clientX: 20 }] });
+	// 	fireEvent.touchEnd(text2!, { changedTouches: [{ clientX: 130 }] });
+	// 	text1 = container.querySelector("#test1");
+	// 	expect(text1).toBeTruthy();
+	// 	text3 = container.querySelector("#test3");
+	// 	expect(text3).toBeNull();
+	// 	//向后翻 1-》2
+	// 	fireEvent.touchStart(text1!, { touches: [{ clientX: 130 }] });
+	// 	fireEvent.touchEnd(text1!, { changedTouches: [{ clientX: 20 }] });
+	// 	text1 = container.querySelector("#test1");
+	// 	expect(text1).toBeTruthy();
+	// 	text2 = container.querySelector("#test2");
+	// 	expect(text2).toBeTruthy();
+	// 	text3 = container.querySelector("#test3");
+	// 	expect(text3).toBeNull();
+	// 	//2-3
+	// 	fireEvent.touchStart(text2!, { touches: [{ clientX: 130 }] });
+	// 	fireEvent.touchEnd(text2!, { changedTouches: [{ clientX: 20 }] });
+	// 	text1 = container.querySelector("#test1");
+	// 	expect(text1).toBeNull();
+	// 	text2 = container.querySelector("#test2");
+	// 	expect(text2).toBeTruthy();
+	// 	text3 = container.querySelector("#test3");
+	// 	expect(text3).toBeTruthy();
+	// 	//不变
+	// 	fireEvent.touchStart(text2!, { touches: [{ clientX: 130 }] });
+	// 	fireEvent.touchEnd(text2!, { changedTouches: [{ clientX: 120 }] });
+	// 	text1 = container.querySelector("#test1");
+	// 	expect(text1).toBeNull();
+	// 	text2 = container.querySelector("#test2");
+	// 	expect(text2).toBeTruthy();
+	// 	text3 = container.querySelector("#test3");
+	// 	expect(text3).toBeTruthy();
+	// });
+
+	// it("should render one item", () => {
+	// 	const wrapper = trender(testOneItem());
+	// 	expect(wrapper).toMatchSnapshot();
+	// });
+
+	// it("should test resize", async () => {
+	// 	act(() => {
+	// 		render(testResize(), container);
+	// 	});
+	// 	act(() => {
+	// 		window.dispatchEvent(new Event("resize"));
+	// 	});
+	// 	expect(container).toMatchSnapshot();
+	// });
 });
