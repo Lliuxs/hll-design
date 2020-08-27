@@ -233,4 +233,4 @@ Progress.defaultProps = {
 	bottomColor: color.medium,
 };
 
-export default Progress
+export default Progress;

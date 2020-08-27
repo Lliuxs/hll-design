@@ -7,3 +7,6 @@ export * from './components/avatar';
 export * from './components/badge';
 export * from './components/radio';
 export * from './components/carousel';
+export * from './components/progress';
+export * from './components/modal';
+export * from './components/message';

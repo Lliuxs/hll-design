@@ -65,3 +65,4 @@ export declare const spacing: {
 };
 export declare const breakpoint = 600;
 export declare const pageMargin = 5;
+export declare const messageBoxShadow: import("styled-components").FlattenSimpleInterpolation;

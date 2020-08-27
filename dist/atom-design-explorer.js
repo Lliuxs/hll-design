@@ -5,6 +5,8 @@ var styled__default = _interopDefault(styled);
 var React = require('react');
 var React__default = _interopDefault(React);
 var polished = require('polished');
+var ReactDOM = require('react-dom');
+var ReactDOM__default = _interopDefault(ReactDOM);
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -59,6 +61,15 @@ function _templateObject() {
 }
 var GlobalStyle = styled.createGlobalStyle(_templateObject());
 
+function _templateObject$1() {
+  var data = _taggedTemplateLiteralLoose(["\n\tbox-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12),\n\t\t0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);\n"]);
+
+  _templateObject$1 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
 var color = {
   // Palette
   primary: "#FF4785",
@@ -130,23 +141,50 @@ var spacing = {
 };
 var breakpoint = 600;
 var pageMargin = 5;
+var messageBoxShadow = styled.css(_templateObject$1());
 
-function _templateObject$1() {
-  var data = _taggedTemplateLiteralLoose(["\n  0%, 100% { opacity: 1; }\n  50% { opacity: .4; }\n"]);
+function _templateObject7() {
+  var data = _taggedTemplateLiteralLoose(["\n  0% {\n     transform: rotate(0deg);\n  }\n  100% {\n     transform: rotate(360deg);\n  }\n"]);
 
-  _templateObject$1 = function _templateObject() {
+  _templateObject7 = function _templateObject7() {
     return data;
   };
 
   return data;
 }
-var easing = {
-  rubber: "cubic-bezier(0.175, 0.885, 0.335, 1.05)"
-};
-var glow = styled.keyframes(_templateObject$1());
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteralLoose(["\n  0% {\n    opacity: 1;\n    margin-top: 0;\n  }\n  100% {\n    opacity: 0;\n    margin-top: -30px;\n  }\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteralLoose(["\n  0% {\n    opacity: 0;\n    margin-top: -30px;\n  }\n  50% {\n    opacity: 0.1;\n    margin-top: -15px;\n  }\n  100% {\n    opacity: 1;\n    margin-top: 0;\n  }\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteralLoose(["\n  0% {\n    opacity: 1;\n    transform: scaleY(1, 1);\n    transform-origin:center;\n  }\n  100% {\n    opacity: 0;\n    transform: scaleY(0, 0);\n  }\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteralLoose(["\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  overflow: hidden;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  text-decoration: none;\n  transition: all 150ms ease-out;\n  transform: translate3d(0,0,0);\n  vertical-align: top;\n  white-space: nowrap;\n  user-select: none;\n  opacity: 1;\n  margin: 0;\n  background: transparent;\n\n\n  font-size: ", "px;\n  font-weight: ", ";\n  line-height: 1;\n\n  ", "\n\n  ", " {\n    transform: scale3d(1,1,1) translate3d(0,0,0);\n    transition: transform 700ms ", ";\n    opacity: 1;\n  }\n\n  ", " {\n    transform: translate3d(0, 100%, 0);\n  }\n\n  ", "\n\n  ", "\n\n  ", "\n\n\n\n  ", "\n\n  ", "\n\n  ", "\n\n  ", ";\n\n    ", ";\n\n    ", ";\n\n      ", "\n\n      ", "\n\n      ", ";\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  0% {\n    opacity: 0;\n    transform: scaleY(0, 0)\n  }\n  100% {\n    opacity: 1;\n    transform: scaleY(1, 1);\n    transform-origin:center;\n  }\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -156,7 +194,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteralLoose(["\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 0;\n\tright: 0;\n\topacity: 0;\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  0% { opacity: 0.1;\n    width: 0; \n  }\n  20% { opacity: 0.5;\n    width: 0; \n  } \n  100% { opacity: 0;\n    width: 100%; \n  }\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -166,9 +204,49 @@ function _templateObject2() {
 }
 
 function _templateObject$2() {
-  var data = _taggedTemplateLiteralLoose(["\n\tdisplay: inline-block;\n\tvertical-align: top;\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n  0%, 100% { opacity: 1; }\n  50% { opacity: .4; }\n"]);
 
   _templateObject$2 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var easing = {
+  rubber: "cubic-bezier(0.175, 0.885, 0.335, 1.05)"
+};
+var glow = styled.keyframes(_templateObject$2());
+var progressFlash = styled.keyframes(_templateObject2());
+var modalOpenAnimate = styled.keyframes(_templateObject3());
+var modalCloseAnimate = styled.keyframes(_templateObject4());
+var messageOpenAnimate = styled.keyframes(_templateObject5());
+var messageCloseAnimate = styled.keyframes(_templateObject6());
+var iconSpin = styled.keyframes(_templateObject7());
+
+function _templateObject3$1() {
+  var data = _taggedTemplateLiteralLoose(["\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  overflow: hidden;\n  padding: ", ";\n  position: relative;\n  text-align: center;\n  text-decoration: none;\n  transition: all 150ms ease-out;\n  transform: translate3d(0,0,0);\n  vertical-align: top;\n  white-space: nowrap;\n  user-select: none;\n  opacity: 1;\n  margin: 0;\n  background: transparent;\n\n\n  font-size: ", "px;\n  font-weight: ", ";\n  line-height: 1;\n\n  ", "\n\n  ", " {\n    transform: scale3d(1,1,1) translate3d(0,0,0);\n    transition: transform 700ms ", ";\n    opacity: 1;\n  }\n\n  ", " {\n    transform: translate3d(0, 100%, 0);\n  }\n\n  ", "\n\n  ", "\n\n  ", "\n\n\n\n  ", "\n\n  ", "\n\n  ", "\n\n  ", ";\n\n    ", ";\n\n    ", ";\n\n      ", "\n\n      ", "\n\n      ", ";\n"]);
+
+  _templateObject3$1 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$1() {
+  var data = _taggedTemplateLiteralLoose(["\n\tposition: absolute;\n\ttop: 50%;\n\tleft: 0;\n\tright: 0;\n\topacity: 0;\n"]);
+
+  _templateObject2$1 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$3() {
+  var data = _taggedTemplateLiteralLoose(["\n\tdisplay: inline-block;\n\tvertical-align: top;\n"]);
+
+  _templateObject$3 = function _templateObject() {
     return data;
   };
 
@@ -190,14 +268,14 @@ var SIZES = {
   medium: "medium"
 }; // button的样式
 
-var Text = styled__default.span(_templateObject$2());
-var Loading = styled__default.span(_templateObject2());
+var Text = styled__default.span(_templateObject$3());
+var Loading = styled__default.span(_templateObject2$1());
 var btnPadding = {
   medium: "13px 20px",
   small: "8px 16px"
 }; // 样式文件
 
-var StyledButton = styled__default.button(_templateObject3(), function (props) {
+var StyledButton = styled__default.button(_templateObject3$1(), function (props) {
   return props.size === SIZES.small ? "8px 16px" : "13px 20px";
 }, function (props) {
   return props.size === SIZES.small ? typography.size.s1 : typography.size.s2;
@@ -422,29 +500,29 @@ var icons = {
   accessibility: "M512 0a512 512 0 110 1024A512 512 0 01512 0zm0 89.6a422.4 422.4 0 100 844.8 422.4 422.4 0 000-844.8zm262.2 250a40.9 40.9 0 01-27.5 49.3l-169.1 50.7c-8.2 2.7-15.1 11-13.7 20.5 1.3 27.4 1.5 76.5 7 98.4 12.9 59 82.4 214.4 91 233.6a56 56 0 014.9 19 40 40 0 01-40 40c-18 0-30.3-12.7-38.2-28.4A34096 34096 0 01510.9 664l-77.7 165.7-1.3 2.1a40 40 0 01-69.3-39.7c8.6-19 78-174.5 90.8-233.6 5.5-21.9 6-71 7.3-98.4a21 21 0 00-13.7-20.5l-169.1-50.7a40.7 40.7 0 01-27.5-50.7c6.9-20.5 30.2-30.1 50.9-24.6 0 0 154.6 49.3 209.6 49.3s213.8-50.7 213.8-50.7c20.6-5.5 44 6.8 49.5 27.4zm-264-171.2a76.7 76.7 0 110 153.4c-42.6 0-77-34.2-77-76.7 0-41 34.4-76.7 77-76.7z"
 };
 
-function _templateObject2$1() {
+function _templateObject2$2() {
   var data = _taggedTemplateLiteralLoose(["\n\tfill: ", ";\n"]);
 
-  _templateObject2$1 = function _templateObject2() {
+  _templateObject2$2 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$3() {
+function _templateObject$4() {
   var data = _taggedTemplateLiteralLoose(["\n\tdisplay: ", ";\n\tvertical-align: middle;\n\tshape-rendering: inherit;\n\ttransform: translate3d(0, 0, 0);\n"]);
 
-  _templateObject$3 = function _templateObject() {
+  _templateObject$4 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Svg = styled__default.svg(_templateObject$3(), function (props) {
+var Svg = styled__default.svg(_templateObject$4(), function (props) {
   return props.block ? "block" : "inline-block";
 });
-var Path = styled__default.path(_templateObject2$1(), function (props) {
+var Path = styled__default.path(_templateObject2$2(), function (props) {
   return props.color;
 });
 function Icon(props) {
@@ -486,70 +564,70 @@ function _templateObject8() {
   return data;
 }
 
-function _templateObject7() {
+function _templateObject7$1() {
   var data = _taggedTemplateLiteralLoose(["\n    font-size: ", "px;\n    line-height: ", "px;\n  "]);
 
-  _templateObject7 = function _templateObject7() {
+  _templateObject7$1 = function _templateObject7() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject6() {
+function _templateObject6$1() {
   var data = _taggedTemplateLiteralLoose(["\n  color: ", ";\n  text-align: center;\n\n  font-size: ", "px;\n  line-height: ", "px;\n\n  ", "\n\n  ", "\n\n  ", "\n"]);
 
-  _templateObject6 = function _templateObject6() {
+  _templateObject6$1 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5() {
+function _templateObject5$1() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tbackground: ", ";\n\t\t"]);
 
-  _templateObject5 = function _templateObject5() {
+  _templateObject5$1 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4() {
+function _templateObject4$1() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\theight: ", "px;\n\t\t\twidth: ", "px;\n\t\t\tline-height: ", "px;\n\t\t"]);
 
-  _templateObject4 = function _templateObject4() {
+  _templateObject4$1 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$1() {
+function _templateObject3$2() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\theight: ", "px;\n\t\t\twidth: ", "px;\n\t\t\tline-height: ", "px;\n\t\t"]);
 
-  _templateObject3$1 = function _templateObject3() {
+  _templateObject3$2 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$2() {
+function _templateObject2$3() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\theight: ", "px;\n\t\t\twidth: ", "px;\n\t\t\tline-height: ", "px;\n\t\t"]);
 
-  _templateObject2$2 = function _templateObject2() {
+  _templateObject2$3 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$4() {
+function _templateObject$5() {
   var data = _taggedTemplateLiteralLoose(["\n  background: ", ";\n  border-radius: 50%;\n  display: inline-block;\n  vertical-align: top;\n  overflow: hidden;\n  text-transform: uppercase;\n\n  height: ", "px;\n  width: ", "px;\n  line-height: ", "px;\n\n  ", "\n\n  ", "\n\n  ", "\n\n  ", "\n\n  img {\n    width: 100%;\n    height: auto;\n    display: block;\n  }\n\n  svg {\n    position: relative;\n    bottom: -2px;\n    height: 100%;\n    width: 100%;\n    vertical-align: top;\n  }\n\n  path {\n    fill: ", ";\n    animation: ", " 1.5s ease-in-out infinite;\n  }\n"]);
 
-  _templateObject$4 = function _templateObject() {
+  _templateObject$5 = function _templateObject() {
     return data;
   };
 
@@ -563,19 +641,19 @@ var AvatarSize = {
   tiny: 16
 }; // 样式
 
-var Image = styled__default.div(_templateObject$4(), function (props) {
+var Image = styled__default.div(_templateObject$5(), function (props) {
   return !props.isLoading ? "transparent" : color.light;
 }, AvatarSize.medium, AvatarSize.medium, AvatarSize.medium, function (props) {
-  return props.size === "tiny" && styled.css(_templateObject2$2(), AvatarSize.tiny, AvatarSize.tiny, AvatarSize.tiny);
+  return props.size === "tiny" && styled.css(_templateObject2$3(), AvatarSize.tiny, AvatarSize.tiny, AvatarSize.tiny);
 }, function (props) {
-  return props.size === "small" && styled.css(_templateObject3$1(), AvatarSize.small, AvatarSize.small, AvatarSize.small);
+  return props.size === "small" && styled.css(_templateObject3$2(), AvatarSize.small, AvatarSize.small, AvatarSize.small);
 }, function (props) {
-  return props.size === "large" && styled.css(_templateObject4(), AvatarSize.large, AvatarSize.large, AvatarSize.large);
+  return props.size === "large" && styled.css(_templateObject4$1(), AvatarSize.large, AvatarSize.large, AvatarSize.large);
 }, function (props) {
-  return !props.src && styled.css(_templateObject5(), !props.isLoading && "#37D5D3");
+  return !props.src && styled.css(_templateObject5$1(), !props.isLoading && "#37D5D3");
 }, color.medium, glow);
-var Initial = styled__default.div(_templateObject6(), color.lightest, typography.size.s2, AvatarSize.medium, function (props) {
-  return props.size === "tiny" && styled.css(_templateObject7(), parseFloat(typography.size.s1) - 2, AvatarSize.tiny);
+var Initial = styled__default.div(_templateObject6$1(), color.lightest, typography.size.s2, AvatarSize.medium, function (props) {
+  return props.size === "tiny" && styled.css(_templateObject7$1(), parseFloat(typography.size.s1) - 2, AvatarSize.tiny);
 }, function (props) {
   return props.size === "small" && styled.css(_templateObject8(), typography.size.s1, AvatarSize.small);
 }, function (props) {
@@ -621,60 +699,60 @@ Avatar.defaultProps = {
   size: "medium"
 };
 
-function _templateObject6$1() {
+function _templateObject6$2() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
 
-  _templateObject6$1 = function _templateObject6() {
+  _templateObject6$2 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$1() {
+function _templateObject5$2() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
 
-  _templateObject5$1 = function _templateObject5() {
+  _templateObject5$2 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$1() {
+function _templateObject4$2() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
 
-  _templateObject4$1 = function _templateObject4() {
+  _templateObject4$2 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$2() {
+function _templateObject3$3() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
 
-  _templateObject3$2 = function _templateObject3() {
+  _templateObject3$3 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$3() {
+function _templateObject2$4() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tcolor: ", ";\n\t\t\tbackground: ", ";\n\t\t"]);
 
-  _templateObject2$3 = function _templateObject2() {
+  _templateObject2$4 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$5() {
+function _templateObject$6() {
   var data = _taggedTemplateLiteralLoose(["\n\tdisplay: inline-block;\n\tvertical-align: top;\n\tfont-size: 11px;\n\tline-height: 12px;\n\tpadding: 4px 12px;\n\tborder-radius: 3em;\n\tfont-weight: ", ";\n\n\tsvg {\n\t\theight: 12px;\n\t\twidth: 12px;\n\t\tmargin-right: 4px;\n\t\tmargin-top: -2px;\n\t}\n\n\t", ";\n\n\t", ";\n\n\t", ";\n\n\t", ";\n\n\t", ";\n"]);
 
-  _templateObject$5 = function _templateObject() {
+  _templateObject$6 = function _templateObject() {
     return data;
   };
 
@@ -695,16 +773,16 @@ var badgeBackground = {
   warning: background.warning,
   error: color.negative
 };
-var BadgeWrapper = styled__default.div(_templateObject$5(), typography.weight.bold, function (props) {
-  return props.status === "positive" && styled.css(_templateObject2$3(), badgeColor.positive, badgeBackground.positive);
+var BadgeWrapper = styled__default.div(_templateObject$6(), typography.weight.bold, function (props) {
+  return props.status === "positive" && styled.css(_templateObject2$4(), badgeColor.positive, badgeBackground.positive);
 }, function (props) {
-  return props.status === "negative" && styled.css(_templateObject3$2(), badgeColor.negative, badgeBackground.negative);
+  return props.status === "negative" && styled.css(_templateObject3$3(), badgeColor.negative, badgeBackground.negative);
 }, function (props) {
-  return props.status === "warning" && styled.css(_templateObject4$1(), badgeColor.warning, badgeBackground.warning);
+  return props.status === "warning" && styled.css(_templateObject4$2(), badgeColor.warning, badgeBackground.warning);
 }, function (props) {
-  return props.status === "error" && styled.css(_templateObject5$1(), badgeColor.error, badgeBackground.error);
+  return props.status === "error" && styled.css(_templateObject5$2(), badgeColor.error, badgeBackground.error);
 }, function (props) {
-  return props.status === "neutral" && styled.css(_templateObject6$1(), badgeColor.neutral, badgeBackground.neutral);
+  return props.status === "neutral" && styled.css(_templateObject6$2(), badgeColor.neutral, badgeBackground.neutral);
 });
 function Badge(props) {
   return React__default.createElement(BadgeWrapper, Object.assign({}, props));
@@ -713,86 +791,86 @@ Badge.defaultProps = {
   status: "neutral"
 };
 
-function _templateObject7$1() {
+function _templateObject7$2() {
   var data = _taggedTemplateLiteralLoose(["\n\tfont-weight: ", ";\n\tfont-size: ", "px;\n\tcolor: ", ";\n\tmargin-left: 6px;\n\theight: 1em;\n\tdisplay: flex;\n\talign-items: center;\n"]);
 
-  _templateObject7$1 = function _templateObject7() {
+  _templateObject7$2 = function _templateObject7() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject6$2() {
+function _templateObject6$3() {
   var data = _taggedTemplateLiteralLoose(["\n\tmargin: 0 0.4em 0 0;\n\tfont-size: initial;\n\topacity: 0;\n\n\t& + span {\n\t\t&:before,\n\t\t&:after {\n\t\t\tposition: absolute;\n\t\t\ttop: 0;\n\t\t\tleft: 0;\n\t\t\theight: 1em;\n\t\t\twidth: 1em;\n\t\t\tcontent: \"\";\n\t\t\tdisplay: block;\n\t\t\tborder-radius: 3em;\n\t\t}\n\t}\n\n\t& + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset;\n\t}\n\n\t&:focus + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset;\n\t}\n\n\t&:checked + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset;\n\t}\n\n\t&:checked:focus + span:before {\n\t\tbox-shadow: ", " 0 0 0 1px inset,\n\t\t\t", " 0 0 5px 2px;\n\t}\n\n\t& + span:after {\n\t\ttransition: all 150ms ease-out;\n\t\ttransform: scale3d(0, 0, 1);\n\n\t\theight: 10px;\n\t\tmargin-left: 2px;\n\t\tmargin-top: 2px;\n\t\twidth: 10px;\n\n\t\topacity: 0;\n\t}\n\n\t&:checked + span:after {\n\t\ttransform: scale3d(1, 1, 1);\n\t\tbackground: ", ";\n\t\topacity: 1;\n\t}\n"]);
 
-  _templateObject6$2 = function _templateObject6() {
+  _templateObject6$3 = function _templateObject6() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject5$2() {
+function _templateObject5$3() {
   var data = _taggedTemplateLiteralLoose(["\n\tdisplay: flex;\n\talign-items: center;\n\tflex-wrap: wrap;\n"]);
 
-  _templateObject5$2 = function _templateObject5() {
+  _templateObject5$3 = function _templateObject5() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject4$2() {
+function _templateObject4$3() {
   var data = _taggedTemplateLiteralLoose(["\n\tfont-size: ", "px;\n\tfont-weight: ", ";\n\tcolor: ", ";\n\tmargin-top: 4px;\n\tmargin-left: calc(", "px + 0.4em);\n\twidth: 100%;\n"]);
 
-  _templateObject4$2 = function _templateObject4() {
+  _templateObject4$3 = function _templateObject4() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject3$3() {
+function _templateObject3$4() {
   var data = _taggedTemplateLiteralLoose(["\n\t\t\tborder: 0px !important;\n\t\t\tclip: rect(0 0 0 0) !important;\n\t\t\t-webkit-clip-path: inset(100%) !important;\n\t\t\tclip-path: inset(100%) !important;\n\t\t\theight: 1px !important;\n\t\t\toverflow: hidden !important;\n\t\t\tpadding: 0px !important;\n\t\t\tposition: absolute !important;\n\t\t\twhite-space: nowrap !important;\n\t\t\twidth: 1px !important;\n\t\t"]);
 
-  _templateObject3$3 = function _templateObject3() {
+  _templateObject3$4 = function _templateObject3() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject2$4() {
+function _templateObject2$5() {
   var data = _taggedTemplateLiteralLoose(["\n\t", "\n"]);
 
-  _templateObject2$4 = function _templateObject2() {
+  _templateObject2$5 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$6() {
+function _templateObject$7() {
   var data = _taggedTemplateLiteralLoose(["\n\tcursor: ", ";\n\tfont-size: ", "px;\n\tfont-weight: ", ";\n\tposition: relative;\n\theight: 1em;\n\tdisplay: flex;\n\talign-items: center;\n\topacity: ", ";\n"]);
 
-  _templateObject$6 = function _templateObject() {
+  _templateObject$7 = function _templateObject() {
     return data;
   };
 
   return data;
 }
-var Label = styled__default.label(_templateObject$6(), function (props) {
+var Label = styled__default.label(_templateObject$7(), function (props) {
   return props.disabled ? "not-allowed" : "pointer";
 }, typography.size.s2, typography.weight.bold, function (props) {
   return props.disabled ? 0.5 : 1;
 });
-var OptionalText = styled__default.span(_templateObject2$4(), function (props) {
-  return props.hideLabel && styled.css(_templateObject3$3());
+var OptionalText = styled__default.span(_templateObject2$5(), function (props) {
+  return props.hideLabel && styled.css(_templateObject3$4());
 });
-var Description = styled__default.div(_templateObject4$2(), typography.size.s1, typography.weight.regular, color.mediumdark, typography.size.s2);
-var RadioWrapper = styled__default.div(_templateObject5$2());
-var Input = styled__default.input(_templateObject6$2(), color.mediumdark, function (props) {
+var Description = styled__default.div(_templateObject4$3(), typography.size.s1, typography.weight.regular, color.mediumdark, typography.size.s2);
+var RadioWrapper = styled__default.div(_templateObject5$3());
+var Input = styled__default.input(_templateObject6$3(), color.mediumdark, function (props) {
   return color[props.appearance];
 }, function (props) {
   return color[props.appearance];
@@ -803,7 +881,7 @@ var Input = styled__default.input(_templateObject6$2(), color.mediumdark, functi
 }, function (props) {
   return color[props.appearance];
 });
-var Error = styled__default.span(_templateObject7$1(), typography.weight.regular, typography.size.s2, color.negative);
+var Error = styled__default.span(_templateObject7$2(), typography.weight.regular, typography.size.s2, color.negative);
 function Radio(props) {
   var wrapperClass = props.wrapperClass,
       error = props.error,
@@ -832,27 +910,27 @@ Radio.defaultProps = {
   hideLabel: false
 };
 
-function _templateObject2$5() {
+function _templateObject2$6() {
   var data = _taggedTemplateLiteralLoose(["\n\tbox-shadow: ", ";\n\tpadding: 10px;\n\tborder-radius: 5px;\n"]);
 
-  _templateObject2$5 = function _templateObject2() {
+  _templateObject2$6 = function _templateObject2() {
     return data;
   };
 
   return data;
 }
 
-function _templateObject$7() {
+function _templateObject$8() {
   var data = _taggedTemplateLiteralLoose(["\n\t", "\n\t", "\n\t", "\n\t", "\n"]);
 
-  _templateObject$7 = function _templateObject() {
+  _templateObject$8 = function _templateObject() {
     return data;
   };
 
   return data;
 }
 
-var Transition = styled__default.div(_templateObject$7(), function (props) {
+var Transition = styled__default.div(_templateObject$8(), function (props) {
   return !props.animatein && props.direction === "left" && "\n\t\ttransform: translateX(" + props.width + "px);\n\t\t";
 }, function (props) {
   return !props.animatein && props.direction === "right" && "\n\t\ttransform: translateX(-" + props.width + "px);\n\t\t";
@@ -861,7 +939,7 @@ var Transition = styled__default.div(_templateObject$7(), function (props) {
 }, function (props) {
   return props.animatein && props.direction === "right" && "\n\t\ttransform: translateX(0);\n\t\ttransition: all " + props.delay / 1000 + "s ease;\n\t\t";
 });
-var Wrapper = styled__default.div(_templateObject2$5(), function (props) {
+var Wrapper = styled__default.div(_templateObject2$6(), function (props) {
   return props.viewportBoxshadow;
 }); // 设置当前
 
@@ -1140,6 +1218,670 @@ Carousel.defaultProps = {
   touchDiff: 10
 };
 
+function _templateObject6$4() {
+  var data = _taggedTemplateLiteralLoose(["\n\tline-height: ", "px;\n\twidth: ", "px;\n\theight: ", "px;\n\tborder-radius: 50%;\n\tdisplay: inline-block;\n\tfont-weight: ", ";\n\tleft: 50%;\n\tposition: absolute;\n\ttext-align: center;\n\ttop: 50%;\n\ttransform: translateX(-50%) translateY(-50%);\n"]);
+
+  _templateObject6$4 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$4() {
+  var data = _taggedTemplateLiteralLoose(["\n\tposition: relative;\n\tdisplay: inline-block;\n\tborder-radius: 50%;\n"]);
+
+  _templateObject5$4 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4$4() {
+  var data = _taggedTemplateLiteralLoose(["\n\tline-height: ", "px;\n\tfont-weight: ", ";\n\ttext-align: center;\n\tdisplay: inline-block;\n\tmargin-left: 10px;\n\tmin-width: 55px;\n"]);
+
+  _templateObject4$4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$5() {
+  var data = _taggedTemplateLiteralLoose(["\n\twidth: 100%;\n\tborder-radius: 5px;\n\tposition: relative;\n\tbackground: ", ";\n\theight: ", "px;\n"]);
+
+  _templateObject3$5 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$7() {
+  var data = _taggedTemplateLiteralLoose(["\n\twidth: ", "%;\n\theight: ", "px;\n\tbackground-color: ", ";\n\tbackground-image: linear-gradient(\n\t\tto right,\n\t\t", ",\n\t\t", "\n\t);\n\ttransition: all 0.4s cubic-bezier(0.08, 0.82, 0.17, 1) 0s;\n\tborder-radius: 5px;\n\tposition: relative;\n\t&::before {\n\t\tanimation: ", " 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;\n\t\tbackground: ", ";\n\t\tborder-radius: 10px;\n\t\tbottom: 0;\n\t\tcontent: \"\";\n\t\tleft: 0;\n\t\topacity: 0;\n\t\tposition: absolute;\n\t\tright: 0;\n\t\ttop: 0;\n\t}\n"]);
+
+  _templateObject2$7 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$9() {
+  var data = _taggedTemplateLiteralLoose(["\n\tdisplay: flex;\n\tpadding: 5px;\n\talign-items: center;\n"]);
+
+  _templateObject$9 = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+var BarWrapper = styled__default.div(_templateObject$9());
+var BarMain = styled__default.div(_templateObject2$7(), function (props) {
+  return props.state;
+}, function (props) {
+  return props.height ? props.height : 8;
+}, function (props) {
+  return props.primary;
+}, function (props) {
+  return props.primary;
+}, function (props) {
+  return props.secondary;
+}, progressFlash, function (props) {
+  return props.flashColor;
+});
+var BarMainWrapper = styled__default.div(_templateObject3$5(), function (props) {
+  return props.bottomColor;
+}, function (props) {
+  return props.height ? props.height : 8;
+});
+var BarText = styled__default.div(_templateObject4$4(), function (props) {
+  return props.height ? props.height : 8;
+}, typography.weight.bold);
+var CircleWrapper = styled__default.div(_templateObject5$4());
+var CircleText = styled__default.div(_templateObject6$4(), function (props) {
+  return props.size * 0.62;
+}, function (props) {
+  return props.size * 0.62;
+}, function (props) {
+  return props.size * 0.62;
+}, typography.weight.bold);
+/**
+ * 进度条一遍分为两种 长条形使用div 环形的使用svg是做 stroke-dasharray属性
+ * 进度可以操作 算百分比 文字可以自定义
+ * https://developer.mozilla.org/zh-CN/docs/Web/SVG/Element/circle
+ */
+
+function Progress(props) {
+  var count = props.count,
+      countNumber = props.countNumber,
+      height = props.height,
+      circle = props.circle,
+      size = props.size,
+      progressText = props.progressText,
+      flashColor = props.flashColor,
+      primary = props.primary,
+      secondary = props.secondary,
+      bottomColor = props.bottomColor,
+      style = props.style,
+      classname = props.classname;
+
+  var _useState = React.useState(0),
+      state = _useState[0],
+      setState = _useState[1];
+
+  var _useState2 = React.useState(''),
+      dashArray = _useState2[0],
+      setDashArray = _useState2[1];
+
+  React.useMemo(function () {
+    if (count < 0) {
+      setState(0);
+    } else if (count > 100) {
+      setState(100);
+    } else {
+      setState(count);
+    }
+  }, [count]);
+  React.useEffect(function () {
+    if (circle) {
+      var percent = state / 100;
+      var perimeter = Math.PI * 2 * 170;
+
+      var _dashArray = perimeter * percent + " " + (1 - percent);
+
+      setDashArray(_dashArray);
+    }
+  }, [circle, state]);
+  var render = React.useMemo(function () {
+    if (circle) {
+      return React__default.createElement(CircleWrapper, {
+        style: style,
+        className: classname
+      }, React__default.createElement("svg", {
+        width: size,
+        height: size,
+        viewBox: "0 0 420 420",
+        style: {
+          transform: "rotate(270deg)"
+        }
+      }, React__default.createElement("defs", null, React__default.createElement("radialGradient", {
+        id: "linear",
+        r: "100%",
+        cx: "100%",
+        cy: "100%",
+        spreadMethod: "pad"
+      }, React__default.createElement("stop", {
+        offset: "0%",
+        stopColor: "#40a9ff"
+      }), React__default.createElement("stop", {
+        offset: "100%",
+        stopColor: "#36cfc9"
+      }))), React__default.createElement("circle", {
+        cx: "210",
+        cy: "210",
+        r: "170",
+        strokeWidth: "40",
+        stroke: "#f5f5f5",
+        fill: "none"
+      }), React__default.createElement("circle", {
+        cx: "210",
+        cy: "210",
+        r: "170",
+        strokeWidth: "40",
+        stroke: "url(#linear)",
+        fill: "none",
+        opacity: state === 0 ? 0 : 1,
+        strokeLinecap: "round",
+        strokeDasharray: dashArray,
+        strokeDashoffset: "0px",
+        style: {
+          transition: "stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s ease 0s, stroke-width 0.06s ease 0.3s"
+        }
+      })), React__default.createElement(CircleText, {
+        size: size
+      }, progressText ? progressText : state + "%"));
+    } else {
+      return React__default.createElement(BarWrapper, {
+        style: style,
+        className: classname
+      }, React__default.createElement(BarMainWrapper, {
+        bottomColor: bottomColor,
+        height: height
+      }, React__default.createElement(BarMain, {
+        flashColor: flashColor,
+        primary: primary,
+        secondary: secondary,
+        state: state,
+        height: height
+      })), countNumber && React__default.createElement(BarText, {
+        height: height
+      }, progressText ? progressText : state + "%"));
+    }
+  }, [bottomColor, circle, classname, countNumber, dashArray, flashColor, height, primary, progressText, secondary, size, state, style]);
+  return React__default.createElement(React__default.Fragment, null, render);
+}
+Progress.defaultProps = {
+  countNumber: true,
+  circle: false,
+  size: 100,
+  primary: color.primary,
+  secondary: color.gold,
+  flashColor: color.lightest,
+  bottomColor: color.medium
+};
+
+function _templateObject9$1() {
+  var data = _taggedTemplateLiteralLoose(["\n\theight: 30px;\n\tline-height: 30px;\n\tfont-size: ", "px;\n\tfont-weight: ", ";\n\tpadding: 5px;\n"]);
+
+  _templateObject9$1 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8$1() {
+  var data = _taggedTemplateLiteralLoose(["\n\tmin-height: 100px;\n\tpadding: 10px;\n"]);
+
+  _templateObject8$1 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7$3() {
+  var data = _taggedTemplateLiteralLoose(["\n\tdisplay: flex;\n\tjustify-content: flex-end;\n\talign-items: center;\n\tpadding: 10px;\n"]);
+
+  _templateObject7$3 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6$5() {
+  var data = _taggedTemplateLiteralLoose(["\n\tposition: absolute;\n\tright: 5px;\n\ttop: 5px;\n"]);
+
+  _templateObject6$5 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$5() {
+  var data = _taggedTemplateLiteralLoose(["\n\tbackground-color: rgba(0, 0, 0, 0.45);\n\tbottom: 0;\n\tleft: 0;\n\tposition: fixed;\n\tright: 0;\n\ttop: 0;\n"]);
+
+  _templateObject5$5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4$5() {
+  var data = _taggedTemplateLiteralLoose(["\n\t\t\tanimation: ", " ", "s ease-in;\n\t\t"]);
+
+  _templateObject4$5 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$6() {
+  var data = _taggedTemplateLiteralLoose(["\n\t\t\tanimation: ", " ", "s ease-in;\n\t\t"]);
+
+  _templateObject3$6 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$8() {
+  var data = _taggedTemplateLiteralLoose(["\n\tbackground: #fff;\n\tborder: none;\n\tborder-radius: 5px;\n\tbox-shadow: 2px 2px 4px #d9d9d9;\n\ttext-shadow: 1px 1px 4px #d9d9d9, -1px -1px 4px #fff;\n\tmargin: 0 auto;\n\tmin-width: 320px;\n\toverflow: hidden;\n\tpadding: 8px;\n\tposition: relative;\n\ttop: 100px;\n\ttransition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);\n\twidth: 30%;\n\tz-index: 1001;\n\t", "\n\t", "\n"]);
+
+  _templateObject2$8 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$a() {
+  var data = _taggedTemplateLiteralLoose(["\n\tposition: fixed;\n\ttop: 0;\n\tleft: 0;\n\tright: 0;\n\tbottom: 0;\n\tz-index: 1000;\n"]);
+
+  _templateObject$a = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function useStateAnimation( // 如果是React.Dispatch旧限定函数必须是useState了
+parentSetState, delay) {
+  if (delay === void 0) {
+    delay = 300;
+  }
+
+  // 自己内部控制开启和关闭
+  var _useState = React.useState(true),
+      state = _useState[0],
+      setState = _useState[1];
+
+  var _useMemo = React.useMemo(function () {
+    var timer;
+
+    var innerclose = function innerclose(v) {
+      setState(v);
+      timer = window.setTimeout(function () {
+        parentSetState(v);
+        setState(true);
+      }, delay);
+    };
+
+    var unmount = function unmount() {
+      return window.clearTimeout(timer);
+    };
+
+    return [innerclose, unmount];
+  }, [delay, parentSetState]),
+      innerClose = _useMemo[0],
+      unmount = _useMemo[1];
+
+  return [state, innerClose, unmount];
+} // modal打开就不会滚动 使用自定义hook解决
+
+function useStopScroll(state, delay, open) {
+  if (open) {
+    var width = window.innerWidth - document.body.clientWidth;
+
+    if (state) {
+      document.body.style.overflow = "hidden";
+      document.body.style.width = "calc(100% - " + width + "px)";
+    } else {
+      // 等待动画渲染
+      setTimeout(function () {
+        document.body.style.overflow = "auto";
+        document.body.style.width = "100%";
+      }, delay);
+    }
+  }
+}
+var ModalWrapper = styled__default.div(_templateObject$a());
+var ModalViewPort = styled__default.div(_templateObject2$8(), function (props) {
+  return props.visible && styled.css(_templateObject3$6(), modalOpenAnimate, props.delay / 1000);
+}, function (props) {
+  return !props.visible && styled.css(_templateObject4$5(), modalCloseAnimate, props.delay / 1000);
+});
+var ModalMask = styled__default.div(_templateObject5$5());
+var CloseBtn = styled__default.div(_templateObject6$5());
+var ConfirmWrapper = styled__default.div(_templateObject7$3());
+var ChildrenWrapper = styled__default.div(_templateObject8$1());
+var TitleWrapper = styled__default.div(_templateObject9$1(), typography.size.m2, typography.weight.bold); // modal组件 使用ReactDOM.createPortals(child, container)挂载
+// modal组件分为三部分 一个是标题 一个是children(body部分 必须) 下面的按钮
+
+function Modal(props) {
+  var visible = props.visible,
+      maskClose = props.maskClose,
+      closeButton = props.closeButton,
+      delay = props.delay,
+      mask = props.mask,
+      container = props.container,
+      confirm = props.confirm,
+      okText = props.okText,
+      style = props.style,
+      cancelText = props.cancelText,
+      onOk = props.onOk,
+      onCancel = props.onCancel,
+      callback = props.callback,
+      title = props.title,
+      parentSetState = props.parentSetState,
+      stopScroll = props.stopScroll,
+      portralStyle = props.portralStyle,
+      refCallback = props.refCallback,
+      closeCallback = props.closeCallback;
+  var ref = React.useRef(null);
+
+  var _useStateAnimation = useStateAnimation(parentSetState, delay),
+      state = _useStateAnimation[0],
+      setState = _useStateAnimation[1],
+      unmount = _useStateAnimation[2];
+
+  var render = React.useMemo(function () {
+    if (!visible) {
+      unmount();
+      return null;
+    } else {
+      return ReactDOM.createPortal(React__default.createElement(ModalWrapper, {
+        ref: ref,
+        style: portralStyle
+      }, React__default.createElement(ModalViewPort, {
+        style: style,
+        visible: state,
+        delay: delay
+      }, React__default.createElement("div", null, title && React__default.createElement(TitleWrapper, null, title), closeButton && React__default.createElement(CloseBtn, null, React__default.createElement(Button, {
+        style: {
+          background: "white",
+          borderRadius: "5px",
+          padding: "5px"
+        },
+        onClick: function onClick() {
+          setState(false);
+          if (closeCallback) closeCallback();
+        }
+      }, React__default.createElement(Icon, {
+        icon: "closeAlt"
+      })))), React__default.createElement(ChildrenWrapper, null, props.children), confirm && React__default.createElement(ConfirmWrapper, null, React__default.createElement(Button, {
+        appearance: "secondary",
+        onClick: function onClick() {
+          onOk ? onOk(setState) : setState(false);
+          if (callback) callback(true);
+        }
+      }, okText ? okText : "确认"), React__default.createElement(Button, {
+        appearance: "secondary",
+        onClick: function onClick() {
+          onCancel ? onCancel(setState) : setState(false);
+          if (callback) callback(false);
+        },
+        style: {
+          marginLeft: "10px"
+        }
+      }, cancelText ? cancelText : "取消"))), mask && React__default.createElement(ModalMask, {
+        onClick: function onClick() {
+          if (maskClose) {
+            setState(false);
+
+            if (closeCallback) {
+              closeCallback();
+            }
+          }
+        }
+      })), container);
+    }
+  }, [callback, cancelText, closeButton, closeCallback, confirm, container, mask, maskClose, okText, onCancel, onOk, portralStyle, props.children, setState, style, title, state, visible, delay, unmount]);
+  useStopScroll(visible, 300, stopScroll);
+  React.useEffect(function () {
+    if (refCallback && ref.current) {
+      refCallback(ref.current);
+    }
+  }, [refCallback]);
+  return React__default.createElement(React__default.Fragment, null, render);
+}
+
+function _templateObject6$6() {
+  var data = _taggedTemplateLiteralLoose(["\n\t\t\tanimation: ", " ", "s ease-in;\n\t\t"]);
+
+  _templateObject6$6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5$6() {
+  var data = _taggedTemplateLiteralLoose(["\n\t\t\tanimation: ", " ", "s ease-in;\n\t\t"]);
+
+  _templateObject5$6 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4$6() {
+  var data = _taggedTemplateLiteralLoose(["\n\t", "\n\t", "\n"]);
+
+  _templateObject4$6 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3$7() {
+  var data = _taggedTemplateLiteralLoose(["\n\t\t\t\tanimation: ", " 2s linear infinite;\n\t\t\t"]);
+
+  _templateObject3$7 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2$9() {
+  var data = _taggedTemplateLiteralLoose(["\n\tmargin-right: 10px;\n\t& > svg {\n\t\tfont-size: ", "px;\n\t\t", "\n\t}\n"]);
+
+  _templateObject2$9 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject$b() {
+  var data = _taggedTemplateLiteralLoose(["\n\tdisplay: inline-block;\n\tpadding: 10px 16px;\n\tbackground: ", ";\n\tcolor: ", ";\n\tfont-size: ", "px;\n\tfont-weight: ", ";\n\tmargin: 10px;\n\t", ";\n\tborder-radius: 2px;\n"]);
+
+  _templateObject$b = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+var defaultConfig = {
+  mount: document.body,
+  delay: 2000,
+  callback: null,
+  animationDuring: 300,
+  background: color.lightest,
+  color: color.dark
+};
+var wrap;
+var createMessage = function createMessage(type) {
+  return function (content, config) {
+    if (config === void 0) {
+      config = {};
+    }
+
+    var fconfig = _extends({}, defaultConfig, config);
+
+    if (!wrap) {
+      // 如果有的话，说明已经调用过这个函数了，这个空div就可以一直复用
+      wrap = document.createElement("div");
+      wrap.style.cssText = "\n\t\t\t\tline-height:1.5;\n\t\t\t\ttext-align:\tcenter;\n\t\t\t\tcolor: #333;\n\t\t\t\tbox-sizing: border-box;\n\t\t\t\tmargin: 0;\n\t\t\t\tpadding: 0;\n\t\t\t\tlist-style: none;\n\t\t\t\tposition: fixed;\n\t\t\t\tz-index: 100000;\n\t\t\t\twidth: 100%;\n\t\t\t\ttop: 16px;\n\t\t\t\tleft: 0;\n\t\t\t\tpointer-events: none;";
+
+      if (wrap) {
+        // document.body && document.body.appendChild(wrap); // 挂body上
+        fconfig.mount.appendChild(wrap);
+      }
+    }
+
+    var divs = document.createElement("div");
+    wrap.appendChild(divs);
+    ReactDOM__default.render(React__default.createElement(Message, {
+      rootDom: wrap,
+      parentDom: divs,
+      content: content,
+      fconfig: fconfig,
+      iconType: type
+    }), divs);
+  };
+};
+var MessageText = styled__default.span(_templateObject$b(), function (props) {
+  return props.bg;
+}, function (props) {
+  return props.fc;
+}, typography.size.s2, typography.weight.bold, messageBoxShadow);
+var IconWrapper = styled__default.span(_templateObject2$9(), typography.size.s2, function (props) {
+  return props.spin && styled.css(_templateObject3$7(), iconSpin);
+});
+var MessageTextWrapper = styled__default.div(_templateObject4$6(), function (props) {
+  return props.openState && styled.css(_templateObject5$6(), messageOpenAnimate, props.ani / 1000);
+}, function (props) {
+  return props.closeState && styled.css(_templateObject6$6(), messageCloseAnimate, props.ani / 1000);
+}); // 组件的卸载问题 组件要卸载dom fiber也要卸载掉
+
+function Message(props) {
+  var rootDom = props.rootDom,
+      parentDom = props.parentDom,
+      content = props.content,
+      fconfig = props.fconfig,
+      iconType = props.iconType;
+
+  var _useState = React.useState(false),
+      close = _useState[0],
+      setClose = _useState[1];
+
+  var renderIcon = React.useMemo(function () {
+    switch (iconType) {
+      case "default":
+        return null;
+
+      case "info":
+        return React__default.createElement(IconWrapper, null, React__default.createElement(Icon, {
+          icon: "info",
+          color: color.primary
+        }));
+
+      case "success":
+        return React__default.createElement(IconWrapper, null, React__default.createElement(Icon, {
+          icon: "check",
+          color: color.positive
+        }));
+
+      case "error":
+        return React__default.createElement(IconWrapper, null, React__default.createElement(Icon, {
+          icon: "closeAlt",
+          color: color.negative
+        }));
+
+      case "warning":
+        return React__default.createElement(IconWrapper, null, React__default.createElement(Icon, {
+          icon: "info",
+          color: color.warning
+        }));
+
+      case "loading":
+        return React__default.createElement(IconWrapper, {
+          spin: true
+        }, React__default.createElement(Icon, {
+          icon: "sync"
+        }));
+
+      default:
+        return null;
+    }
+  }, [iconType]);
+  var unmount = React.useMemo(function () {
+    return function () {
+      if (parentDom && rootDom) {
+        ReactDOM.unmountComponentAtNode(parentDom);
+        rootDom.removeChild(parentDom);
+      }
+    };
+  }, [parentDom, rootDom]);
+  React.useEffect(function () {
+    // 结束操作
+    var closeStart = fconfig.delay - fconfig.animationDuring;
+    var timer1 = window.setTimeout(function () {
+      setClose(true);
+    }, closeStart > 0 ? closeStart : 0);
+    var timer2 = window.setTimeout(function () {
+      setClose(false);
+      unmount();
+
+      if (fconfig.callback) {
+        fconfig.callback();
+      }
+    }, fconfig.delay);
+    return function () {
+      window.clearTimeout(timer1);
+      window.clearTimeout(timer2);
+    };
+  }, [fconfig, unmount]);
+  return React__default.createElement(MessageTextWrapper, {
+    openState: true,
+    closeState: close,
+    ani: fconfig.animationDuring
+  }, React__default.createElement(MessageText, {
+    bg: fconfig.background,
+    fc: fconfig.color
+  }, renderIcon, content));
+}
+var message = {
+  info: createMessage("info"),
+  success: createMessage("success"),
+  error: createMessage("error"),
+  warning: createMessage("warning"),
+  loading: createMessage("loading"),
+  default: createMessage("default")
+};
+
 exports.APPEARANCES = APPEARANCES;
 exports.Avatar = Avatar;
 exports.AvatarSize = AvatarSize;
@@ -1149,6 +1891,9 @@ exports.Carousel = Carousel;
 exports.GlobalStyle = GlobalStyle;
 exports.Icon = Icon;
 exports.Loading = Loading;
+exports.Message = Message;
+exports.Modal = Modal;
+exports.Progress = Progress;
 exports.Radio = Radio;
 exports.SIZES = SIZES;
 exports.StyledButton = StyledButton;
@@ -1159,9 +1904,20 @@ exports.badgeColor = badgeColor;
 exports.breakpoint = breakpoint;
 exports.btnPadding = btnPadding;
 exports.color = color;
+exports.createMessage = createMessage;
 exports.easing = easing;
 exports.glow = glow;
+exports.iconSpin = iconSpin;
+exports.message = message;
+exports.messageBoxShadow = messageBoxShadow;
+exports.messageCloseAnimate = messageCloseAnimate;
+exports.messageOpenAnimate = messageOpenAnimate;
+exports.modalCloseAnimate = modalCloseAnimate;
+exports.modalOpenAnimate = modalOpenAnimate;
 exports.pageMargin = pageMargin;
+exports.progressFlash = progressFlash;
 exports.spacing = spacing;
 exports.typography = typography;
+exports.useStateAnimation = useStateAnimation;
+exports.useStopScroll = useStopScroll;
 //# sourceMappingURL=atom-design-explorer.js.map
